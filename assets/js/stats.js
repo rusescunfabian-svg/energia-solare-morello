@@ -8,7 +8,7 @@
   let played = false;
 
   const animate = (el) => {
-    const card = el.closest('.stat-card');
+    const card = el.closest('.stat-pill, .stat-card');
     const target = parseFloat(el.dataset.count, 10);
     const decimals = parseInt(el.dataset.decimals || '0', 10);
     const suffix = el.dataset.suffix || '';
