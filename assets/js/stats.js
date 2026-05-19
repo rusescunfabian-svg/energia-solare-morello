@@ -2,7 +2,7 @@
   const root = document.querySelector('.figures');
   if (!root) return;
 
-  const els = [...root.querySelectorAll('.figures__count[data-count]')];
+  const els = [...root.querySelectorAll('[data-count]')];
   if (!els.length) return;
 
   let started = false;
@@ -31,9 +31,8 @@
   const animate = (el) => {
     const target = parseFloat(el.dataset.count, 10);
     const ms = parseInt(el.dataset.ms || '2400', 10);
-    const row = el.closest('.figures__row');
-    row?.classList.add('is-active');
-
+    const row = el.closest('[data-stat-row]');
+    row?.classList.add('ring-amber-500/30');
     const t0 = performance.now();
 
     const step = (now) => {
@@ -41,7 +40,10 @@
       const eased = 1 - (1 - p) ** 3;
       paint(el, target * eased);
       if (p < 1) requestAnimationFrame(step);
-      else paint(el, target);
+      else {
+        paint(el, target);
+        row?.classList.remove('ring-amber-500/30');
+      }
     };
 
     requestAnimationFrame(step);
@@ -52,58 +54,38 @@
     started = true;
     root.classList.add('is-live');
 
-    const mega = els.find((el) => el.closest('.figures__hero'));
+    const mega = els.find((el) => el.dataset.mega === 'true');
     const rest = els.filter((el) => el !== mega);
 
     if (mega) {
       paint(mega, 0);
       animate(mega);
     }
-
     rest.forEach((el, i) => {
       paint(el, 0);
-      setTimeout(() => animate(el), 400 + i * 180);
+      setTimeout(() => animate(el), 450 + i * 200);
     });
   };
 
   const observe = () => {
     if (started) return;
-
     const go = () => {
       ready = true;
-      setTimeout(run, 120);
+      setTimeout(run, 100);
     };
-
-    const splash = document.getElementById('intro-splash');
-    const afterIntro = () => {
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver(
-          ([e]) => {
-            if (e.isIntersecting) {
-              go();
-              io.disconnect();
-            }
-          },
-          { threshold: 0.2 }
-        );
-        io.observe(root);
-      } else {
-        go();
-      }
-    };
-
-    if (!splash || splash.classList.contains('is-done')) {
-      ready = true;
-      afterIntro();
-    } else {
-      document.addEventListener(
-        'intro-done',
-        () => {
-          ready = true;
-          afterIntro();
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        ([e]) => {
+          if (e.isIntersecting) {
+            go();
+            io.disconnect();
+          }
         },
-        { once: true }
+        { threshold: 0.15 }
       );
+      io.observe(root);
+    } else {
+      go();
     }
   };
 

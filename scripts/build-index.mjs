@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+import { writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const html = `<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -23,7 +28,7 @@
 
   <div class="bg-amber-500 text-slate-950 font-medium text-xs tracking-widest uppercase py-2.5 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-1 border-b border-amber-600/20">
     <div><i class="fa-solid fa-gears mr-1.5"></i> Impianti certificati DM 37/08 · Provincia di Varese</div>
-    <div>Consulenza: <a href="tel:+393292354847" class="font-bold hover:underline">329 235 4847</a></div>
+    <motion.div>Consulenza: <a href="tel:+393292354847" class="font-bold hover:underline">329 235 4847</a></div>
   </div>
 
   <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 px-4 md:px-6 py-3">
@@ -63,8 +68,8 @@
       <div class="lg:col-span-5 blur-card p-6 md:p-8 rounded-xl">
         <h3 class="text-xl font-bold text-white mb-5 font-display">Ingegneria energetica locale</h3>
         <div class="space-y-4 text-sm">
-          <div class="flex gap-4 p-4 bg-slate-950/50 rounded border border-slate-800"><i class="fa-solid fa-location-dot text-amber-500 text-xl"></i><div><h4 class="font-bold text-white text-xs uppercase mb-1">Sede</h4><p class="text-slate-400">Via Torino 4, 21040 Vedano Olona (VA)</p></div></div>
-          <div class="flex gap-4 p-4 bg-slate-950/50 rounded border border-slate-800"><i class="fa-solid fa-headset text-amber-500 text-xl"></i><div><h4 class="font-bold text-white text-xs uppercase mb-1">Telefono</h4><a href="tel:+393292354847" class="text-lg font-bold text-white">329 235 4847</a></div></div>
+          <div class="flex gap-4 p-4 bg-slate-950/50 rounded border border-slate-800"><i class="fa-solid fa-location-dot text-amber-500 text-xl"></i><motion.div><h4 class="font-bold text-white text-xs uppercase mb-1">Sede</h4><p class="text-slate-400">Via Torino 4, 21040 Vedano Olona (VA)</p></div></div>
+          <div class="flex gap-4 p-4 bg-slate-950/50 rounded border border-slate-800"><i class="fa-solid fa-headset text-amber-500 text-xl"></i><motion.div><h4 class="font-bold text-white text-xs uppercase mb-1">Telefono</h4><a href="tel:+393292354847" class="text-lg font-bold text-white">329 235 4847</a></div></div>
         </div>
         <p class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-500">P.IVA 1470745430 · Varese / Como / Milano nord</p>
       </div>
@@ -87,19 +92,19 @@
 
   <section id="ingegneria" class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-24">
     <div class="text-center max-w-3xl mx-auto mb-14 space-y-4"><span class="text-xs font-bold uppercase tracking-widest text-amber-500">Sistemi</span><h2 class="text-2xl md:text-5xl font-bold text-white">Tre tecnologie. Un referente.</h2></div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div id="fotovoltaico" class="p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 space-y-4"><div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl"><i class="fa-solid fa-solar-panel"></i></div><h3 class="text-2xl font-bold text-white">Fotovoltaico</h3><p class="text-slate-400 text-sm">Moduli, inverter, quadro e connessione in rete con collaudo.</p></div>
-      <div id="eolico" class="p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 space-y-4"><div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl"><i class="fa-solid fa-wind"></i></div><h3 class="text-2xl font-bold text-white">Eolico</h3><p class="text-slate-400 text-sm">Minieolico dove vento e distanze reggono.</p></div>
-      <div id="termico" class="p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 space-y-4"><div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl"><i class="fa-solid fa-temperature-arrow-up"></i></div><h3 class="text-2xl font-bold text-white">Solare termico</h3><p class="text-slate-400 text-sm">Acqua calda e integrazione con caldaia o pompa di calore.</p></div>
+    <motion.div class="grid md:grid-cols-3 gap-6">
+      <div id="fotovoltaico" class="p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 space-y-4"><motion.div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl"><i class="fa-solid fa-solar-panel"></i></div><h3 class="text-2xl font-bold text-white">Fotovoltaico</h3><p class="text-slate-400 text-sm">Moduli, inverter, quadro e connessione in rete con collaudo.</p></div>
+      <div id="eolico" class="p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 space-y-4"><motion.div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl"><i class="fa-solid fa-wind"></i></div><h3 class="text-2xl font-bold text-white">Eolico</h3><p class="text-slate-400 text-sm">Minieolico dove vento e distanze reggono.</p></div>
+      <div id="termico" class="p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 space-y-4"><motion.div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl"><i class="fa-solid fa-temperature-arrow-up"></i></div><h3 class="text-2xl font-bold text-white">Solare termico</h3><p class="text-slate-400 text-sm">Acqua calda e integrazione con caldaia o pompa di calore.</p></motion.div>
     </div>
   </section>
 
   <section id="portfolio-reale" class="bg-slate-950 py-20 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 md:px-6 mb-12"><span class="text-xs font-bold uppercase text-amber-500">Cantieri reali</span><h2 class="text-3xl md:text-5xl font-bold text-white font-display mt-2">Report installazioni</h2><a href="progetti.html" class="text-amber-400 text-sm font-bold mt-2 inline-block">Tutti i progetti →</a></div>
     <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-16">
-      <div class="grid lg:grid-cols-2 gap-10 items-center"><img src="assets/img/hero.jpg" alt="" class="rounded-xl border border-slate-800 w-full h-72 object-cover"><div><p class="text-amber-500 text-xs uppercase font-mono mb-2">Vedano Olona</p><h3 class="text-2xl font-bold text-white mb-3">Tetto in coppo</h3><p class="text-slate-400 text-sm mb-3">Fotovoltaico residenziale con sopralluogo ombre e tegole.</p><a href="progetti/villa-comignolo.html" class="text-amber-400 text-sm font-bold">Dettagli</a></div></div>
-      <div class="grid lg:grid-cols-2 gap-10 items-center"><img src="assets/img/pensilina-industriale.jpg" alt="" class="rounded-xl border border-slate-800 w-full h-72 object-cover lg:order-2"><div class="lg:order-1"><p class="text-amber-500 text-xs uppercase font-mono mb-2">Commerciale</p><h3 class="text-2xl font-bold text-white mb-3">Pensilina FV</h3><p class="text-slate-400 text-sm mb-3">Copertura veicoli con produzione elettrica.</p><a href="progetti/pensilina-industriale.html" class="text-amber-400 text-sm font-bold">Dettagli</a></div></div>
-      <div class="grid lg:grid-cols-2 gap-10 items-center"><img src="assets/img/copertura-piana-misto.jpg" alt="" class="rounded-xl border border-slate-800 w-full h-72 object-cover"><div><p class="text-amber-500 text-xs uppercase font-mono mb-2">FV + termico</p><h3 class="text-2xl font-bold text-white mb-3">Copertura piana</h3><p class="text-slate-400 text-sm mb-3">Impianto misto su capannone.</p><a href="progetti/copertura-piana.html" class="text-amber-400 text-sm font-bold">Dettagli</a></div></div>
+      <div class="grid lg:grid-cols-2 gap-10 items-center"><img src="assets/img/hero.jpg" alt="" class="rounded-xl border border-slate-800 w-full h-72 object-cover"><motion.div><p class="text-amber-500 text-xs uppercase font-mono mb-2">Vedano Olona</p><h3 class="text-2xl font-bold text-white mb-3">Tetto in coppo</h3><p class="text-slate-400 text-sm mb-3">Fotovoltaico residenziale con sopralluogo ombre e tegole.</p><a href="progetti/villa-comignolo.html" class="text-amber-400 text-sm font-bold">Dettagli</a></div></div>
+      <div class="grid lg:grid-cols-2 gap-10 items-center"><img src="assets/img/pensilina-industriale.jpg" alt="" class="rounded-xl border border-slate-800 w-full h-72 object-cover lg:order-2"><motion.div class="lg:order-1"><p class="text-amber-500 text-xs uppercase font-mono mb-2">Commerciale</p><h3 class="text-2xl font-bold text-white mb-3">Pensilina FV</h3><p class="text-slate-400 text-sm mb-3">Copertura veicoli con produzione elettrica.</p><a href="progetti/pensilina-industriale.html" class="text-amber-400 text-sm font-bold">Dettagli</a></div></div>
+      <div class="grid lg:grid-cols-2 gap-10 items-center"><img src="assets/img/copertura-piana-misto.jpg" alt="" class="rounded-xl border border-slate-800 w-full h-72 object-cover"><motion.div><p class="text-amber-500 text-xs uppercase font-mono mb-2">FV + termico</p><h3 class="text-2xl font-bold text-white mb-3">Copertura piana</h3><p class="text-slate-400 text-sm mb-3">Impianto misto su capannone.</p><a href="progetti/copertura-piana.html" class="text-amber-400 text-sm font-bold">Dettagli</a></div></div>
     </div>
   </section>
 
@@ -135,4 +140,8 @@
     if(form&&msg)form.addEventListener('submit',async e=>{e.preventDefault();msg.textContent='Invio...';try{const r=await fetch(form.action,{method:'POST',body:new FormData(form)});msg.textContent=r.ok?'Inviato. Vi richiamiamo.':'Errore. Chiamate 329 235 4847.';if(r.ok)form.reset();}catch{msg.textContent='Errore rete.';}});
   </script>
 </body>
-</html>
+</html>`;
+
+const fixed = html.replaceAll('<motion.div>', '<div>').replaceAll('</motion.div>', '</div>');
+writeFileSync(join(root, 'index.html'), fixed, 'utf8');
+console.log('written', fixed.length);

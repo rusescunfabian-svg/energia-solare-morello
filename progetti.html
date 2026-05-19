@@ -3,120 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Progetti — Energia Solare di Morello Eugenio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">`n  <link rel="stylesheet" href="assets/css/mobile.css">
+  <title>Progetti | Energia Solare di Morello Eugenio</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@400;700&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b111e; color: #f8fafc; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .blur-card { background: rgba(17,24,39,0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.05); }
+  </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-  <header class="site-header is-scrolled">
-    <div class="wrap site-header__inner">
-      <a href="index.html" class="logo logo--img" aria-label="Energia Solare di Morello Eugenio - Home"><img src="assets/img/logo.svg" alt="Energia Solare di Morello Eugenio" class="logo__img" width="88" height="105"></a>
-      <nav class="nav">
-        <a href="index.html#chi-siamo">Chi siamo</a>
-        <a href="index.html#servizi">Servizi</a>
-        <a href="progetti.html" class="is-active">Progetti</a>
-        <a href="index.html#contatti" class="nav-cta">Contatti</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
+  <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html"><img src="assets/img/logo.svg" alt="" class="h-10"></a>
+      <a href="index.html" class="text-sm text-amber-400 hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> Home</a>
     </div>
+  </nav>
+
+  <header class="max-w-7xl mx-auto px-4 py-16">
+    <p class="text-xs uppercase tracking-widest text-amber-500 font-bold">Portfolio</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-white font-display mt-2">Tutti i cantieri</h1>
+    <p class="text-slate-400 mt-4 max-w-2xl text-sm">Foto reali di impianti a Vedano Olona e in provincia di Varese.</p>
   </header>
 
-  <main>
-    <header class="page-hero">
-      <div class="wrap">
-        <p class="breadcrumb"><a href="index.html">Home</a> / Progetti</p>
-        <p class="eyebrow">Portfolio</p>
-        <h1>Alcuni lavori fatti sul campo.</h1>
-        <p class="lead" style="margin-top:1rem">
-          Residenziale, commerciale, tetti difficili. Ogni scheda spiega il problema e come
-          l'abbiamo risolto, con foto dei cantieri veri.
-        </p>
-      </div>
-    </header>
+  <div class="max-w-7xl mx-auto px-4 pb-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a href="progetti/villa-comignolo.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition">
+      <img src="assets/img/hero.jpg" alt="" class="w-full h-48 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Villa a falde</h2><p class="text-slate-500 text-xs mt-1">Fotovoltaico · Vedano Olona</p></div>
+    </a>
+    <a href="progetti/pensilina-industriale.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition">
+      <img src="assets/img/pensilina-industriale.jpg" alt="" class="w-full h-48 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Pensilina</h2><p class="text-slate-500 text-xs mt-1">Commerciale</p></div>
+    </a>
+    <a href="progetti/copertura-piana.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition">
+      <img src="assets/img/copertura-piana-misto.jpg" alt="" class="w-full h-48 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Copertura piana</h2><p class="text-slate-500 text-xs mt-1">FV + termico</p></div>
+    </a>
+    <a href="progetti/cantiere-residenziale.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition">
+      <img src="assets/img/cantiere-tecnico.jpg" alt="" class="w-full h-48 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Posa in quota</h2><p class="text-slate-500 text-xs mt-1">Cantiere</p></div>
+    </a>
+    <a href="progetti/grande-impianto.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition">
+      <img src="assets/img/grande-impianto.jpg" alt="" class="w-full h-48 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Grande impianto</h2><p class="text-slate-500 text-xs mt-1">FV</p></div>
+    </a>
+    <a href="progetti/villa-18-moduli.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition">
+      <img src="assets/img/villa-18-moduli.jpg" alt="" class="w-full h-48 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">18 moduli</h2><p class="text-slate-500 text-xs mt-1">Residenziale</p></div>
+    </a>
+  </div>
 
-    <div class="wrap portfolio-grid">
-      <a href="progetti/villa-comignolo.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/hero.jpg" alt="Villa con fotovoltaico su più falde"></div>
-        <div class="portfolio-card__meta">
-          <h3>Villa a falde multiple</h3>
-          <span class="portfolio-card__loc">Vedano Olona · Fotovoltaico</span>
-        </div>
-      </a>
-      <a href="progetti/tetto-coppi.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/fotovoltaico-tetto-complesso.jpg" alt="Pannelli su tegole in coppo"></div>
-        <div class="portfolio-card__meta">
-          <h3>Integrazione su coppo</h3>
-          <span class="portfolio-card__loc">Zona residenziale · 12 moduli</span>
-        </div>
-      </a>
-      <a href="progetti/cantiere-residenziale.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/cantiere-tecnico.jpg" alt="Tecnico in posa"></div>
-        <div class="portfolio-card__meta">
-          <h3>Posa in quota</h3>
-          <span class="portfolio-card__loc">Cantiere residenziale</span>
-        </div>
-      </a>
-      <a href="progetti/villa-18-moduli.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/villa-18-moduli.jpg" alt="Impianto 18 moduli"></div>
-        <div class="portfolio-card__meta">
-          <h3>Villa con 18 moduli</h3>
-          <span class="portfolio-card__loc">Producibilità ottimizzata</span>
-        </div>
-      </a>
-      <a href="progetti/integrazione-comignolo.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/tetto-comignolo-20-moduli.jpg" alt="Impianto intorno al comignolo"></div>
-        <div class="portfolio-card__meta">
-          <h3>Taglio su comignolo</h3>
-          <span class="portfolio-card__loc">20 moduli · layout su misura</span>
-        </div>
-      </a>
-      <a href="progetti/pensilina-industriale.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/pensilina-industriale.jpg" alt="Pensilina fotovoltaica"></div>
-        <div class="portfolio-card__meta">
-          <h3>Pensilina logistica</h3>
-          <span class="portfolio-card__loc">Commerciale · grande scala</span>
-        </div>
-      </a>
-      <a href="progetti/copertura-piana.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/copertura-piana-misto.jpg" alt="Copertura piana FV e termico"></div>
-        <div class="portfolio-card__meta">
-          <h3>Capannone FV + termico</h3>
-          <span class="portfolio-card__loc">Copertura piana mista</span>
-        </div>
-      </a>
-      <a href="progetti/tetto-lucernari.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/tetto-15-moduli.jpg" alt="Impianto con lucernari"></div>
-        <div class="portfolio-card__meta">
-          <h3>Tetto con lucernari</h3>
-          <span class="portfolio-card__loc">15 moduli · disposizione a L</span>
-        </div>
-      </a>
-      <a href="progetti/posa-drone.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/posa-drone.jpg" alt="Vista drone del cantiere"></div>
-        <div class="portfolio-card__meta">
-          <h3>Posa con ponteggio</h3>
-          <span class="portfolio-card__loc">Documentazione cantiere</span>
-        </div>
-      </a>
-      <a href="progetti/grande-impianto.html" class="portfolio-card reveal">
-        <div class="portfolio-card__img"><img src="assets/img/grande-impianto.jpg" alt="Grande impianto su lamiera"></div>
-        <div class="portfolio-card__meta">
-          <h3>Copertura in lamiera</h3>
-          <span class="portfolio-card__loc">Alta densità moduli</span>
-        </div>
-      </a>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-bottom" style="border:none;padding-top:0">
-      <span>© 2026 Energia Solare di Morello Eugenio</span>
-      <a href="index.html#contatti" style="color:var(--gold-light)">Contattaci →</a>
-    </div>
+  <footer class="border-t border-slate-900 py-8 text-center text-xs text-slate-600">
+    <a href="tel:+393292354847" class="text-amber-400">329 235 4847</a> · Energia Solare di Morello Eugenio
   </footer>
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
