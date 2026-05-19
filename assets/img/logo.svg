@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" role="img" aria-label="Energia Solare di Morello Eugenio">
   <title>Energia Solare di Morello Eugenio</title>
+  <rect width="320" height="380" fill="#ffffff"/>
   <g fill="none" stroke="#F5B800" stroke-width="3" stroke-linecap="round">
     <line x1="160" y1="18" x2="160" y2="34"/>
     <line x1="120" y1="28" x2="128" y2="42"/>
@@ -12,7 +13,7 @@
     <line x1="272" y1="112" x2="256" y2="116"/>
   </g>
   <path fill="#F5B800" d="M72 118c0-48 39.8-87 88-87s88 39 88 87H72z"/>
-  <text x="160" y="188" text-anchor="middle" fill="#2B2F33" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="0.04em">ENERGIA</text>
-  <text x="160" y="236" text-anchor="middle" fill="#2B2F33" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="0.04em">SOLARE</text>
-  <text x="160" y="272" text-anchor="middle" fill="#2B2F33" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" letter-spacing="0.22em">DI MORELLO EUGENIO</text>
+  <text x="160" y="188" text-anchor="middle" fill="#1e293b" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="0.04em">ENERGIA</text>
+  <text x="160" y="236" text-anchor="middle" fill="#1e293b" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="0.04em">SOLARE</text>
+  <text x="160" y="272" text-anchor="middle" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" letter-spacing="0.22em">DI MORELLO EUGENIO</text>
 </svg>
