@@ -72,7 +72,10 @@
     title.textContent = 'Promozione estate 2026';
     const desc = document.createElement('span');
     desc.className = 'promo-bar__desc';
-    desc.textContent = 'Sopralluogo gratuito in provincia di Varese — scade tra:';
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    desc.textContent = isMobile
+      ? 'Sopralluogo gratuito in provincia di Varese'
+      : 'Sopralluogo gratuito in provincia di Varese — scade tra:';
     copy.append(title, desc);
 
     const countdown = document.createElement('div');

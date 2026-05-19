@@ -1,0 +1,500 @@
+/* Mobile-first — stiluri base per telefon, desktop in min-width */
+
+:root {
+  --promo-h: 3.5rem;
+  --header-h: 3.75rem;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap {
+  width: min(1240px, calc(100% - 1.5rem));
+}
+
+/* Header */
+.site-header {
+  padding: 0.65rem 0;
+}
+
+.site-header__inner {
+  gap: 0.75rem;
+}
+
+.logo--full {
+  max-width: 9rem;
+  padding: 0;
+  margin-right: 0;
+}
+
+.logo__line {
+  font-size: 0.82rem;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.logo__line--sub {
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: none;
+}
+
+.nav.is-open {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--paper);
+  padding: calc(var(--header-h) + var(--promo-h) + 1.5rem) 1.5rem 2rem;
+  align-items: stretch;
+  gap: 0;
+  overflow-y: auto;
+}
+
+.nav.is-open a {
+  font-size: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  width: 100%;
+}
+
+.nav.is-open .nav-cta {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem 1.25rem;
+}
+
+/* Promo — compact pe telefon */
+.promo-bar__inner {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  padding: 0.5rem 2.25rem 0.5rem 0.85rem;
+  min-height: var(--promo-h);
+}
+
+.promo-bar__copy {
+  flex: 1 1 100%;
+}
+
+.promo-bar__title {
+  font-size: 0.62rem;
+}
+
+.promo-bar__desc {
+  font-size: 0.7rem;
+  white-space: normal;
+  line-height: 1.35;
+  max-width: none;
+}
+
+.promo-countdown {
+  display: none;
+}
+
+.promo-bar__cta {
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.68rem;
+}
+
+.promo-bar__close {
+  right: 0.5rem;
+}
+
+/* Hero — o coloană, imagine sus */
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+}
+
+.hero__visual {
+  order: -1;
+  min-height: 42vh;
+  max-height: 50vh;
+}
+
+.hero__content {
+  padding: calc(var(--header-h) + var(--promo-h) + 1.25rem) 0 2.5rem;
+}
+
+body.has-promo-bar .hero__content {
+  padding-top: calc(var(--header-h) + var(--promo-h) + 1.25rem);
+}
+
+.hero__content::before {
+  display: none;
+}
+
+.hero h1 {
+  max-width: none;
+  font-size: clamp(1.85rem, 8vw, 2.35rem);
+  line-height: 1.15;
+}
+
+.hero__text {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  max-width: none;
+}
+
+.hero__tag {
+  max-width: none;
+  margin-bottom: 1rem;
+}
+
+.hero-actions {
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.9rem 1rem;
+  font-size: 0.78rem;
+}
+
+.hero__meta {
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1.25rem;
+}
+
+/* Statistiche — griglia 2x2, fără scroll orizontal */
+.home-stats {
+  padding: 2.5rem 0 3rem;
+}
+
+.stats-ribbon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  min-height: auto;
+  padding: 0;
+  overflow: visible;
+}
+
+.stats-ribbon__sep {
+  display: none;
+}
+
+.stat-pill {
+  flex: none;
+  padding: 1.15rem 0.65rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 168, 75, 0.2);
+  border-radius: 2px;
+  transform: translateY(12px) !important;
+}
+
+.home-stats.is-animated .stat-pill,
+.home-stats.is-animated .stat-pill--low,
+.home-stats.is-animated .stat-pill--mid,
+.home-stats.is-animated .stat-pill--high {
+  transform: none !important;
+}
+
+.stat-pill--high {
+  padding-top: 1.15rem;
+  padding-bottom: 1.15rem;
+}
+
+.stat-pill__value {
+  font-size: clamp(2rem, 9vw, 2.5rem);
+}
+
+.stat-pill__label {
+  font-size: 0.62rem;
+  max-width: none;
+  line-height: 1.35;
+}
+
+/* Intro */
+.intro-splash__skip {
+  top: max(1rem, env(safe-area-inset-top));
+  right: 1rem;
+}
+
+.intro-splash__inner {
+  padding: 0 1.25rem;
+}
+
+.intro-splash__sun-wrap {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.5rem;
+}
+
+.intro-splash__brand {
+  font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+  margin-top: 0.75rem;
+}
+
+.intro-splash__eyebrow {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+}
+
+.intro-splash__tag {
+  font-size: 0.62rem;
+}
+
+/* Secțiuni */
+.section {
+  padding-block: 3rem;
+}
+
+.intro-grid__aside {
+  margin-bottom: 1.5rem;
+}
+
+.intro-grid__aside h2 {
+  font-size: 1.75rem;
+}
+
+.lead {
+  font-size: 1rem;
+  max-width: none;
+}
+
+.stat-row {
+  grid-template-columns: 1fr;
+}
+
+.services-grid,
+.portfolio-grid,
+.projects-mosaic,
+.footer-grid,
+.contact-section,
+.project-layout,
+.form-row {
+  grid-template-columns: 1fr;
+}
+
+.project-gallery {
+  grid-template-columns: 1fr;
+}
+
+.project-nav {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Butoane plutitoare */
+.float-actions {
+  right: 0.85rem;
+  bottom: calc(0.85rem + var(--safe-bottom));
+}
+
+.float-btn {
+  padding: 0.75rem;
+}
+
+.float-btn__label {
+  display: none;
+}
+
+.map-block iframe {
+  height: 260px;
+}
+
+.contact-form {
+  padding: 1.25rem;
+}
+
+/* Desktop — peste 768px */
+@media (min-width: 768px) {
+  :root {
+    --promo-h: 3.25rem;
+    --header-h: 4.5rem;
+  }
+
+  html {
+    font-size: 17px;
+  }
+
+  .wrap {
+    width: min(1240px, calc(100% - 3rem));
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    background: transparent;
+    overflow: visible;
+    gap: 2rem;
+  }
+
+  .nav a {
+    padding: 0;
+    border: none;
+    width: auto;
+    font-size: 0.82rem;
+  }
+
+  .nav.is-open .nav-cta {
+    margin-top: 0;
+  }
+
+  .logo--full {
+    max-width: 11.5rem;
+  }
+
+  .logo__line {
+    font-size: clamp(0.88rem, 1.6vw, 1.1rem);
+    white-space: nowrap;
+  }
+
+  .promo-bar__inner {
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0.55rem 2.75rem 0.55rem 0.5rem;
+  }
+
+  .promo-bar__copy {
+    flex: 0 1 auto;
+  }
+
+  .promo-countdown {
+    display: flex;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+
+  .hero__visual {
+    order: 0;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .hero__content {
+    padding: clamp(7.5rem, 16vh, 10rem) clamp(2rem, 5vw, 4rem) clamp(3rem, 8vh, 5rem);
+  }
+
+  body.has-promo-bar .hero__content {
+    padding-top: calc(clamp(7.5rem, 16vh, 10rem) + var(--promo-h));
+  }
+
+  .hero__content::before {
+    display: block;
+  }
+
+  .hero h1 {
+    max-width: 14ch;
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions .btn {
+    width: auto;
+  }
+
+  .hero__meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .stats-ribbon {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 10rem;
+    padding: 1rem 0.25rem 0;
+  }
+
+  .stats-ribbon__sep {
+    display: block;
+  }
+
+  .stat-pill {
+    flex: 1 1 0;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0.5rem 1.25rem;
+    transform: translateY(16px) !important;
+  }
+
+  .home-stats.is-animated .stat-pill--low {
+    transform: translateY(8px) !important;
+  }
+
+  .home-stats.is-animated .stat-pill--mid {
+    transform: translateY(2px) !important;
+  }
+
+  .home-stats.is-animated .stat-pill--high {
+    transform: translateY(-10px) !important;
+  }
+
+  .stat-pill__value {
+    font-size: clamp(2.75rem, 5vw, 4rem);
+  }
+
+  .intro-splash__sun-wrap {
+    width: clamp(140px, 28vw, 200px);
+    height: clamp(140px, 28vw, 200px);
+  }
+
+  .float-btn__label {
+    display: inline;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .projects-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
