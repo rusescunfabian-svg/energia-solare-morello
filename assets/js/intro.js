@@ -15,7 +15,7 @@
       splash.classList.add('is-done');
       document.body.classList.remove('is-intro-locked');
       document.dispatchEvent(new CustomEvent('intro-done'));
-    }, 550);
+    }, 400);
   };
 
   document.body.classList.add('is-intro-locked');
@@ -45,8 +45,6 @@
     let particles = [];
     let raf = 0;
     let running = true;
-    const cx = () => w * 0.5;
-    const cy = () => h * 0.42;
 
     const resize = () => {
       w = canvas.width = window.innerWidth;
@@ -55,14 +53,12 @@
 
     const spawn = (n) => {
       for (let i = 0; i < n; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const dist = 40 + Math.random() * 120;
         particles.push({
-          x: cx() + Math.cos(angle) * dist,
-          y: cy() + Math.sin(angle) * dist,
+          x: w * 0.5 + (Math.random() - 0.5) * 80,
+          y: h * 0.42 + (Math.random() - 0.5) * 80,
           vx: (Math.random() - 0.5) * 0.4,
           vy: -0.2 - Math.random() * 0.8,
-          life: 0.4 + Math.random() * 0.6,
+          life: 0.5 + Math.random() * 0.5,
           size: 0.5 + Math.random() * 2,
         });
       }
@@ -74,39 +70,34 @@
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-        p.life -= 0.004;
+        p.life -= 0.006;
         if (p.life <= 0) return;
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 5);
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
         g.addColorStop(0, `rgba(255, 228, 160, ${p.life})`);
         g.addColorStop(1, 'rgba(255, 228, 160, 0)');
         ctx.fillStyle = g;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
         ctx.fill();
       });
       particles = particles.filter((p) => p.life > 0);
-      if (particles.length < 80) spawn(6);
+      if (particles.length < 60) spawn(10);
       raf = requestAnimationFrame(draw);
     };
 
     resize();
     window.addEventListener('resize', resize);
-    spawn(100);
+    spawn(80);
     draw();
-
-    const stop = () => {
+    setTimeout(() => {
       running = false;
       cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-    };
-    splash.addEventListener('transitionend', stop, { once: true });
-    setTimeout(stop, 10000);
+    }, 3200);
   }
 
   requestAnimationFrame(() => splash.classList.add('is-active'));
 
   setTimeout(() => {
     if (!finished) finish();
-  }, 3500);
-
+  }, 3000);
 })();
