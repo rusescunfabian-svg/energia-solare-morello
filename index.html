@@ -13,44 +13,32 @@
 <body>
 
   <div id="intro-splash" class="intro-splash" aria-hidden="true">
+    <div class="intro-splash__bg" aria-hidden="true"></div>
     <canvas class="intro-canvas" aria-hidden="true"></canvas>
-    <div class="intro-burst" aria-hidden="true"></div>
-    <div class="intro-ring intro-ring--a" aria-hidden="true"></div>
-    <div class="intro-ring intro-ring--b" aria-hidden="true"></div>
+    <div class="intro-splash__flare" aria-hidden="true"></div>
+    <div class="intro-splash__rays" aria-hidden="true"></div>
+    <div class="intro-orbit intro-orbit--a" aria-hidden="true"></div>
+    <div class="intro-orbit intro-orbit--b" aria-hidden="true"></div>
     <button type="button" class="intro-splash__skip">Salta</button>
     <div class="intro-splash__inner">
-      <div class="intro-splash__sun">
-        <div class="intro-splash__sun-rays"></div>
-        <div class="intro-splash__sun-core"></div>
-      </div>
-      <p class="intro-splash__brand">Morello Eugenio</p>
-      <p class="intro-splash__sub">Energia Solare &middot; Vedano Olona</p>
-      <div class="intro-stats-carousel" aria-hidden="true">
-        <div class="intro-stat-slide is-active">
-          <p class="intro-stat-num"><span class="intro-counter" data-target="100" data-suffix="+">0</span></p>
-          <p class="intro-stat-label">impianti realizzati</p>
-        </div>
-        <div class="intro-stat-slide">
-          <p class="intro-stat-num"><span class="intro-counter" data-target="5" data-decimals="1">0,0</span></p>
-          <p class="intro-stat-label">su Google &middot; 7 recensioni</p>
-        </div>
-        <div class="intro-stat-slide">
-          <p class="intro-stat-num intro-stat-num--text">Molti</p>
-          <p class="intro-stat-label">clienti che ci richiamano</p>
-        </div>
-        <div class="intro-stat-slide">
-          <p class="intro-stat-num"><span class="intro-counter" data-target="3">0</span></p>
-          <p class="intro-stat-label">tecnologie: fotovoltaico, termico, eolico</p>
+      <div class="intro-splash__sun-wrap">
+        <div class="intro-splash__sun-halo" aria-hidden="true"></div>
+        <div class="intro-splash__sun">
+          <div class="intro-splash__sun-rays" aria-hidden="true"></div>
+          <div class="intro-splash__sun-core" aria-hidden="true"></div>
         </div>
       </div>
+      <p class="intro-splash__eyebrow">Vedano Olona &middot; Provincia di Varese</p>
+      <h1 class="intro-splash__brand">Energia Solare<br><span>di Morello Eugenio</span></h1>
+      <p class="intro-splash__tag">Fotovoltaico &middot; Solare termico &middot; Eolico</p>
+      <div class="intro-splash__divider" aria-hidden="true"></div>
     </div>
   </div>
 
   <header class="site-header">
     <div class="wrap site-header__inner">
       <a href="index.html" class="logo">
-        <span class="logo__name">Morello Eugenio</span>
-        <span class="logo__sub">Energia Solare</span>
+        <span class="logo__name">Energia Solare</span><span class="logo__sub">di Morello Eugenio</span>
       </a>
       <nav class="nav" aria-label="Menu principale">
         <a href="#chi-siamo">Chi siamo</a>
@@ -99,6 +87,28 @@
         <img src="assets/img/hero.jpg" alt="Impianto fotovoltaico su tetto in coppo, vista dall'alto" width="1200" height="900">
       </div>
     </section>
+    <section class="home-stats reveal" aria-label="I nostri numeri">
+      <div class="wrap">
+        <div class="home-stats__grid">
+          <div class="home-stat">
+            <strong><span data-count="100" data-suffix="+">0</span></strong>
+            <span>impianti realizzati</span>
+          </div>
+          <div class="home-stat">
+            <strong><span data-count="5" data-decimals="1">0,0</span></strong>
+            <span>su Google &middot; 7 recensioni</span>
+          </div>
+          <div class="home-stat">
+            <strong><span data-count="150" data-suffix="+">0</span></strong>
+            <span>clienti che ci richiamano</span>
+          </div>
+          <div class="home-stat">
+            <strong><span data-count="3">0</span></strong>
+            <span>tecnologie: FV, termico, eolico</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="chi-siamo">
       <div class="wrap intro-grid reveal">
@@ -113,24 +123,6 @@
           <p style="margin-top:1.25rem;color:var(--ink-soft)">
             Case, condomini e piccole aziende tra Varese, Como e Milano nord. Tetti in coppo, lamiera o piano: ognuno ha regole diverse e qui le conosciamo.
           </p>
-          <div class="stat-row">
-            <div class="stat">
-              <strong>100+</strong>
-              <span>impianti realizzati</span>
-            </div>
-            <div class="stat">
-              <strong>5,0</strong>
-              <span>su Google &middot; 7 recensioni</span>
-            </div>
-            <div class="stat">
-              <strong>Molti</strong>
-              <span>clienti che ci richiamano</span>
-            </div>
-            <div class="stat">
-              <strong>3</strong>
-              <span>tecnologie: FV, termico, eolico</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -401,6 +393,7 @@
 
   <script src="assets/js/promo-countdown.js"></script>
   <script src="assets/js/intro.js"></script>
+  <script src="assets/js/stats.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
