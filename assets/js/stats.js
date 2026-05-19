@@ -1,140 +1,115 @@
 (() => {
-  const section = document.querySelector('.home-stats');
-  if (!section) return;
+  const root = document.querySelector('.figures');
+  if (!root) return;
 
-  const counters = [...section.querySelectorAll('[data-count]')];
-  if (!counters.length) return;
+  const els = [...root.querySelectorAll('.figures__count[data-count]')];
+  if (!els.length) return;
 
-  const DEFAULT_DURATION = 2800;
-  const STAGGER = 120;
-  let played = false;
-  let introDone = false;
+  let started = false;
+  let ready = false;
 
-  const formatIT = (value, decimals = 0) => {
-    const n = decimals ? value.toFixed(decimals) : String(Math.round(value));
-    const [intPart, decPart] = n.split('.');
-    const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    return decPart ? `${grouped},${decPart}` : grouped;
+  const formatIT = (n, decimals = 0) => {
+    const raw = decimals ? n.toFixed(decimals) : String(Math.round(n));
+    const [a, b] = raw.split('.');
+    const grouped = a.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return b ? `${grouped},${b}` : grouped;
   };
 
-  const displayValue = (el, value) => {
-    const decimals = parseInt(el.dataset.decimals || '0', 10);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const useIT = el.dataset.format === 'it';
-    const body = useIT ? formatIT(value, decimals) : decimals ? value.toFixed(decimals).replace('.', ',') : String(Math.round(value));
-    el.textContent = `${prefix}${body}${suffix}`;
+  const paint = (el, value) => {
+    const d = parseInt(el.dataset.decimals || '0', 10);
+    const pre = el.dataset.prefix || '';
+    const suf = el.dataset.suffix || '';
+    const body =
+      el.dataset.format === 'it'
+        ? formatIT(value, d)
+        : d
+          ? value.toFixed(d).replace('.', ',')
+          : String(Math.round(value));
+    el.textContent = pre + body + suf;
   };
 
-  const resetEl = (el) => {
-    const decimals = parseInt(el.dataset.decimals || '0', 10);
-    const prefix = el.dataset.prefix || '';
-    if (el.dataset.format === 'it') {
-      el.textContent = `${prefix}${decimals ? '0,' + '0'.repeat(decimals) : '0'}`;
-    } else {
-      el.textContent = prefix + (decimals ? `0,${'0'.repeat(decimals)}` : '0');
-    }
-    el.closest('.stat-item')?.classList.remove('is-counting', 'is-done');
-  };
-
-  const runCounter = (el) => {
+  const animate = (el) => {
     const target = parseFloat(el.dataset.count, 10);
-    const duration = parseInt(el.dataset.duration || String(DEFAULT_DURATION), 10);
-    const item = el.closest('.stat-item');
-    const start = performance.now();
-    let lastShown = '';
+    const ms = parseInt(el.dataset.ms || '2400', 10);
+    const row = el.closest('.figures__row');
+    row?.classList.add('is-active');
 
-    item?.classList.add('is-counting');
+    const t0 = performance.now();
 
-    const frame = (now) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - (1 - t) ** 4;
-      const val = target * eased;
-      const next = el.dataset.format === 'it'
-        ? formatIT(val, parseInt(el.dataset.decimals || '0', 10))
-        : String(Math.round(val));
-
-      if (next !== lastShown) {
-        lastShown = next;
-        el.classList.remove('is-tick');
-        void el.offsetWidth;
-        el.classList.add('is-tick');
-      }
-
-      displayValue(el, val);
-
-      if (t < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        displayValue(el, target);
-        el.classList.remove('is-tick');
-        item?.classList.remove('is-counting');
-        item?.classList.add('is-done');
-      }
+    const step = (now) => {
+      const p = Math.min((now - t0) / ms, 1);
+      const eased = 1 - (1 - p) ** 3;
+      paint(el, target * eased);
+      if (p < 1) requestAnimationFrame(step);
+      else paint(el, target);
     };
 
-    requestAnimationFrame(frame);
+    requestAnimationFrame(step);
   };
 
-  const play = () => {
-    if (played || !introDone) return;
-    played = true;
+  const run = () => {
+    if (started || !ready) return;
+    started = true;
+    root.classList.add('is-live');
 
-    counters.forEach(resetEl);
-    section.classList.remove('is-animated');
+    const mega = els.find((el) => el.closest('.figures__hero'));
+    const rest = els.filter((el) => el !== mega);
 
-    requestAnimationFrame(() => {
-      section.classList.add('is-animated');
-      counters.forEach((el, i) => {
-        setTimeout(() => runCounter(el), i * STAGGER);
-      });
+    if (mega) {
+      paint(mega, 0);
+      animate(mega);
+    }
+
+    rest.forEach((el, i) => {
+      paint(el, 0);
+      setTimeout(() => animate(el), 400 + i * 180);
     });
   };
 
-  const watchInView = () => {
-    if (played) return;
+  const observe = () => {
+    if (started) return;
 
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 30) {
-      play();
-      return;
-    }
+    const go = () => {
+      ready = true;
+      setTimeout(run, 120);
+    };
 
-    if (!('IntersectionObserver' in window)) {
-      play();
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          play();
-          io.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
-    );
-    io.observe(section);
-  };
-
-  const onIntroDone = () => {
-    introDone = true;
-    setTimeout(watchInView, 200);
-  };
-
-  const boot = () => {
     const splash = document.getElementById('intro-splash');
+    const afterIntro = () => {
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          ([e]) => {
+            if (e.isIntersecting) {
+              go();
+              io.disconnect();
+            }
+          },
+          { threshold: 0.2 }
+        );
+        io.observe(root);
+      } else {
+        go();
+      }
+    };
+
     if (!splash || splash.classList.contains('is-done')) {
-      introDone = true;
-      watchInView();
+      ready = true;
+      afterIntro();
     } else {
-      document.addEventListener('intro-done', onIntroDone, { once: true });
+      document.addEventListener(
+        'intro-done',
+        () => {
+          ready = true;
+          afterIntro();
+        },
+        { once: true }
+      );
     }
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', observe);
   } else {
-    boot();
+    observe();
   }
 })();

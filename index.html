@@ -9,7 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/mobile.css">`n  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  <link rel="stylesheet" href="assets/css/figures.css">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">`n  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
 </head>
 <body>
 
@@ -85,37 +87,31 @@
         <img src="assets/img/hero.jpg" alt="Impianto fotovoltaico su tetto in coppo, vista dall'alto" width="1200" height="900">
       </div>
     </section>
-
-        <section class="home-stats" id="numeri" aria-label="I nostri numeri">
-      <div class="home-stats__glow" aria-hidden="true"></div>
-      <div class="wrap">
-        <header class="home-stats__head">
-          <p class="eyebrow">In cifre</p>
-          <h2 class="home-stats__title">Risultati sul territorio</h2>
-        </header>
-        <ul class="stats-grid">
-          <li class="stat-item stat-item--hero">
-            <div class="stat-item__value-row">
-              <span class="stat-item__num" data-count="3170000" data-prefix="+" data-format="it" data-duration="3600">0</span>
-              <span class="stat-item__unit">kWh</span>
-            </div>
-            <span class="stat-item__label">di energia pulita prodotta</span>
+    <section class="figures" id="numeri" aria-label="I nostri numeri">
+      <div class="wrap figures__inner">
+        <div class="figures__hero">
+          <span class="figures__eyebrow">I nostri numeri</span>
+          <p class="figures__mega">
+            <span class="figures__count" data-count="3170000" data-prefix="+" data-format="it" data-ms="3200">0</span><span class="figures__unit"> kWh</span>
+          </p>
+          <p class="figures__mega-caption">di energia pulita prodotta dai nostri impianti</p>
+        </div>
+        <ul class="figures__list">
+          <li class="figures__row">
+            <span class="figures__count" data-count="100" data-prefix="+" data-ms="2200">0</span>
+            <span class="figures__desc">impianti realizzati</span>
           </li>
-          <li class="stat-item">
-            <span class="stat-item__num" data-count="100" data-prefix="+" data-duration="2400">0</span>
-            <span class="stat-item__label">impianti realizzati</span>
+          <li class="figures__row">
+            <span class="figures__count" data-count="5" data-decimals="1" data-ms="2000">0,0</span>
+            <span class="figures__desc">su Google<small>7 recensioni</small></span>
           </li>
-          <li class="stat-item">
-            <span class="stat-item__num" data-count="5" data-decimals="1" data-duration="2200">0,0</span>
-            <span class="stat-item__label">valutazione Google</span>
+          <li class="figures__row">
+            <span class="figures__count" data-count="100" data-prefix="+" data-ms="2200">0</span>
+            <span class="figures__desc">clienti che ci richiamano</span>
           </li>
-          <li class="stat-item">
-            <span class="stat-item__num" data-count="100" data-prefix="+" data-duration="2400">0</span>
-            <span class="stat-item__label">clienti che ci richiamano</span>
-          </li>
-          <li class="stat-item">
-            <span class="stat-item__num" data-count="3" data-duration="2000">0</span>
-            <span class="stat-item__label">tecnologie:<br>FV, termico, eolico</span>
+          <li class="figures__row">
+            <span class="figures__count" data-count="3" data-ms="1800">0</span>
+            <span class="figures__desc">tecnologie<small>FV &middot; termico &middot; eolico</small></span>
           </li>
         </ul>
       </div>

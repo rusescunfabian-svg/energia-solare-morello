@@ -231,54 +231,6 @@ body.has-promo-bar .hero__content {
   padding-top: 1.25rem;
 }
 
-/* Statistiche — premium, hero kWh sus */
-.home-stats {
-  padding: 2.75rem 0 3.25rem;
-}
-
-.home-stats__head {
-  margin-bottom: 1.35rem;
-}
-
-.home-stats__title {
-  font-size: clamp(1.5rem, 6.5vw, 1.85rem);
-}
-
-.stats-grid {
-  gap: 0.7rem;
-}
-
-.stat-item {
-  min-height: 8.25rem;
-  padding: 1.2rem 0.55rem;
-}
-
-.stat-item--hero {
-  min-height: 9.5rem;
-  padding: 1.5rem 0.65rem 1.25rem;
-}
-
-.stat-item--hero .stat-item__num {
-  font-size: clamp(2rem, 9.5vw, 2.85rem);
-  word-break: break-word;
-  text-align: center;
-}
-
-.stat-item__num {
-  font-size: clamp(2.5rem, 12vw, 3.35rem);
-  min-height: 1.05em;
-}
-
-.stat-item__unit {
-  font-size: 1rem;
-}
-
-.stat-item__label {
-  font-size: 0.64rem;
-  margin-top: 0.6rem;
-  line-height: 1.35;
-}
-
 /* Intro */
 .intro-splash__skip {
   top: max(1rem, env(safe-area-inset-top));
@@ -491,44 +443,6 @@ body.has-promo-bar .hero__content {
   .hero__meta {
     flex-direction: row;
     flex-wrap: wrap;
-  }
-
-  .stats-ribbon {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 0.5rem;
-    min-height: 10rem;
-    padding: 1rem 0.25rem 0;
-  }
-
-  .stats-ribbon__sep {
-    display: block;
-  }
-
-  .stat-pill {
-    flex: 1 1 0;
-    background: transparent;
-    border: none;
-    padding: 0.5rem 0.5rem 1.25rem;
-    transform: translateY(16px) !important;
-  }
-
-  .home-stats.is-animated .stat-pill--low {
-    transform: translateY(8px) !important;
-  }
-
-  .home-stats.is-animated .stat-pill--mid {
-    transform: translateY(2px) !important;
-  }
-
-  .home-stats.is-animated .stat-pill--high {
-    transform: translateY(-10px) !important;
-  }
-
-  .stat-pill__value {
-    font-size: clamp(2.75rem, 5vw, 4rem);
   }
 
   .intro-splash__sun-wrap {
