@@ -37,8 +37,9 @@
 
   <header class="site-header">
     <div class="wrap site-header__inner">
-      <a href="index.html" class="logo">
-        <span class="logo__name">Energia Solare</span><span class="logo__sub">di Morello Eugenio</span>
+      <a href="index.html" class="logo logo--full">
+        <span class="logo__line">Energia Solare</span>
+        <span class="logo__line logo__line--sub">di Morello Eugenio</span>
       </a>
       <nav class="nav" aria-label="Menu principale">
         <a href="#chi-siamo">Chi siamo</a>
@@ -87,25 +88,39 @@
         <img src="assets/img/hero.jpg" alt="Impianto fotovoltaico su tetto in coppo, vista dall'alto" width="1200" height="900">
       </div>
     </section>
-    <section class="home-stats reveal" aria-label="I nostri numeri">
+
+    <section class="home-stats" id="numeri" aria-label="I nostri numeri">
+      <div class="home-stats__ambient" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="home-stats__grid">
-          <div class="home-stat">
-            <strong><span data-count="100" data-suffix="+">0</span></strong>
-            <span>impianti realizzati</span>
-          </div>
-          <div class="home-stat">
-            <strong><span data-count="5" data-decimals="1">0,0</span></strong>
-            <span>su Google &middot; 7 recensioni</span>
-          </div>
-          <div class="home-stat">
-            <strong><span data-count="150" data-suffix="+">0</span></strong>
-            <span>clienti che ci richiamano</span>
-          </div>
-          <div class="home-stat">
-            <strong><span data-count="3">0</span></strong>
-            <span>tecnologie: FV, termico, eolico</span>
-          </div>
+        <header class="home-stats__head reveal">
+          <p class="eyebrow">In cifre</p>
+          <h2 class="home-stats__title">Risultati che contano sul tetto</h2>
+        </header>
+        <div class="home-stats__showcase">
+          <article class="stat-card" style="--i:0">
+            <span class="stat-card__shine" aria-hidden="true"></span>
+            <span class="stat-card__icon" aria-hidden="true">01</span>
+            <p class="stat-card__value"><span data-count="100" data-suffix="+">0</span></p>
+            <p class="stat-card__label">impianti realizzati</p>
+          </article>
+          <article class="stat-card stat-card--accent" style="--i:1">
+            <span class="stat-card__shine" aria-hidden="true"></span>
+            <span class="stat-card__icon" aria-hidden="true">&#9733;</span>
+            <p class="stat-card__value"><span data-count="5" data-decimals="1">0,0</span></p>
+            <p class="stat-card__label">su Google &middot; 7 recensioni</p>
+          </article>
+          <article class="stat-card" style="--i:2">
+            <span class="stat-card__shine" aria-hidden="true"></span>
+            <span class="stat-card__icon" aria-hidden="true">02</span>
+            <p class="stat-card__value"><span data-count="100" data-suffix="+">0</span></p>
+            <p class="stat-card__label">clienti che ci richiamano</p>
+          </article>
+          <article class="stat-card" style="--i:3">
+            <span class="stat-card__shine" aria-hidden="true"></span>
+            <span class="stat-card__icon" aria-hidden="true">03</span>
+            <p class="stat-card__value"><span data-count="3">0</span></p>
+            <p class="stat-card__label">tecnologie: FV, termico, eolico</p>
+          </article>
         </div>
       </div>
     </section>
@@ -114,7 +129,7 @@
       <div class="wrap intro-grid reveal">
         <aside class="intro-grid__aside">
           <p class="eyebrow">Chi siamo</p>
-          <h2>Eugenio Morello,<br>dal tetto alla bolletta.</h2>
+          <h2>Energia Solare<br>di Morello Eugenio</h2>
         </aside>
         <div>
           <p class="lead">
@@ -182,7 +197,7 @@
         <div class="projects-header reveal">
           <div>
             <p class="eyebrow">Lavori</p>
-            <h2>Eugenio Morello,<br>dal tetto alla bolletta.</h2>
+            <h2>Energia Solare<br>di Morello Eugenio</h2>
           </div>
           <a href="progetti.html" class="link-arrow">Tutti i progetti</a>
         </div>

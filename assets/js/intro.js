@@ -14,6 +14,7 @@
     setTimeout(() => {
       splash.classList.add('is-done');
       document.body.classList.remove('is-intro-locked');
+      document.dispatchEvent(new CustomEvent('intro-done'));
     }, 900);
   };
 
@@ -106,5 +107,6 @@
 
   setTimeout(() => {
     if (!finished) finish();
-  }, 4800);
+  }, 7200);
+
 })();
