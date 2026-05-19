@@ -107,6 +107,6 @@
 
   setTimeout(() => {
     if (!finished) finish();
-  }, 5000);
+  }, 3500);
 
 })();

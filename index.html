@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -14,28 +14,33 @@
 <body>
 
   <div id="intro-splash" class="intro-splash" aria-hidden="true">
-    <button type="button" class="intro-splash__skip">Salta intro</button>
-    <div class="intro-splash__particles" aria-hidden="true"></motion.div>
-    <div class="intro-splash__line intro-splash__line--top"></motion.div>
-    <div class="intro-splash__line intro-splash__line--bottom"></motion.div>
+    <div class="intro-splash__bg" aria-hidden="true"></div>
+    <canvas class="intro-canvas" aria-hidden="true"></canvas>
+    <div class="intro-splash__flare" aria-hidden="true"></div>
+    <div class="intro-splash__rays" aria-hidden="true"></div>
+    <div class="intro-orbit intro-orbit--a" aria-hidden="true"></div>
+    <div class="intro-orbit intro-orbit--b" aria-hidden="true"></div>
+    <button type="button" class="intro-splash__skip">Salta</button>
     <div class="intro-splash__inner">
-      <div class="intro-splash__sun">
-        <div class="intro-splash__sun-rays"></motion.div>
-        <div class="intro-splash__sun-core"></motion.div>
-      </motion.div>
-      <p class="intro-splash__brand">Morello Eugenio</p>
-      <p class="intro-splash__sub">Energia Solare · Vedano Olona</p>
-      <div class="intro-countdown" aria-live="polite">
-        <span class="intro-countdown__num is-active">3</span>
-      </motion.div>
-    </motion.div>
-  </motion.div>
+      <div class="intro-splash__sun-wrap">
+        <div class="intro-splash__sun-halo" aria-hidden="true"></div>
+        <div class="intro-splash__sun">
+          <div class="intro-splash__sun-rays" aria-hidden="true"></div>
+          <div class="intro-splash__sun-core" aria-hidden="true"></div>
+        </div>
+      </div>
+      <p class="intro-splash__eyebrow">Vedano Olona &middot; Provincia di Varese</p>
+      <h1 class="intro-splash__brand">Energia Solare<br><span>di Morello Eugenio</span></h1>
+      <p class="intro-splash__tag">Dal tetto alla bolletta</p>
+      <div class="intro-splash__divider" aria-hidden="true"></div>
+    </div>
+  </div>
 
   <header class="site-header">
     <div class="wrap site-header__inner">
-      <a href="index.html" class="logo">
-        <span class="logo__name">Morello Eugenio</span>
-        <span class="logo__sub">Energia Solare</span>
+      <a href="index.html" class="logo logo--full">
+        <span class="logo__line">Energia Solare</span>
+        <span class="logo__line logo__line--sub">di Morello Eugenio</span>
       </a>
       <nav class="nav" aria-label="Menu principale">
         <a href="#chi-siamo">Chi siamo</a>
@@ -47,93 +52,103 @@
       <button class="menu-toggle" aria-label="Apri menu" type="button">
         <span></span><span></span><span></span>
       </button>
-    </motion.div>
+    </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero__content">
-        <p class="eyebrow hero__tag">Vedano Olona · Varese</p>
-        <h1>Il sole sul tetto,<br>con chi lo monta davvero.</h1>
+        <p class="eyebrow hero__tag">Vedano Olona &middot; Varese</p>
+        <h1>Fotovoltaico, termico ed eolico<br>a Vedano Olona.</h1>
+                <p class="hero__slogan">Dal tetto alla bolletta, con un solo referente.</p>
         <p class="hero__text">
-          Progettiamo e installiamo impianti fotovoltaici, solari termici ed eolici per case,
-          condomini e piccole-medie attività. Prima di proporti i moduli, guardiamo il tetto:
-          inclinazione, ombre, stato delle tegole.
+          Progettiamo e realizziamo impianti su misura per case, condomini e attivit&agrave;.
+          Ogni preventivo parte dal sopralluogo: sapete cosa installiamo, perch&eacute; e a quale investimento.
         </p>
+        
         <div class="hero-actions">
           <a href="#contatti" class="btn">Richiedi preventivo</a>
           <a href="tel:+393292354847" class="btn btn--outline">Chiama ora</a>
           <a href="https://wa.me/393292354847?text=Buongiorno%2C%20vorrei%20un%20preventivo%20per%20un%20impianto." class="btn btn--wa-inline" target="_blank" rel="noopener">WhatsApp</a>
-        </motion.div>
+        </div>
         <dl class="hero__meta">
           <div>
             <dt>Sede</dt>
             <dd>Via Torino 4, Vedano Olona</dd>
-          </motion.div>
+          </div>
           <div>
             <dt>Telefono</dt>
             <dd><a href="tel:+393292354847">329 235 4847</a></dd>
-          </motion.div>
+          </div>
           <div>
             <dt>Google</dt>
-            <dd>5,0 · 7 recensioni</dd>
-          </motion.div>
+            <dd>5,0 &middot; 7 recensioni</dd>
+          </div>
         </dl>
-      </motion.div>
+      </div>
       <div class="hero__visual">
         <img src="assets/img/hero.jpg" alt="Impianto fotovoltaico su tetto in coppo, vista dall'alto" width="1200" height="900">
-      </motion.div>
+      </div>
+    </section>
+
+    <section class="home-stats" id="numeri" aria-label="I nostri numeri">
+      <div class="home-stats__ambient" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="stats-ribbon">
+          <article class="stat-pill stat-pill--low" style="--i:0">
+            <p class="stat-pill__value"><span data-count="100" data-suffix="+">0</span></p>
+            <p class="stat-pill__label">impianti realizzati</p>
+          </article>
+          <span class="stats-ribbon__sep" aria-hidden="true"></span>
+          <article class="stat-pill stat-pill--high" style="--i:1">
+            <p class="stat-pill__value"><span data-count="5" data-decimals="1">0,0</span></p>
+            <p class="stat-pill__label">su Google &middot; 7 recensioni</p>
+          </article>
+          <span class="stats-ribbon__sep" aria-hidden="true"></span>
+          <article class="stat-pill stat-pill--mid" style="--i:2">
+            <p class="stat-pill__value"><span data-count="100" data-suffix="+">0</span></p>
+            <p class="stat-pill__label">clienti che ci richiamano</p>
+          </article>
+          <span class="stats-ribbon__sep" aria-hidden="true"></span>
+          <article class="stat-pill stat-pill--low" style="--i:3">
+            <p class="stat-pill__value"><span data-count="3">0</span></p>
+            <p class="stat-pill__label">tecnologie:<br>FV, termico, eolico</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="chi-siamo">
       <div class="wrap intro-grid reveal">
         <aside class="intro-grid__aside">
           <p class="eyebrow">Chi siamo</p>
-          <h2>Impresa di Vedano Olona,<br>con nome e cognome.</h2>
+          <h2>Energia Solare<br>di Morello Eugenio</h2>
         </aside>
         <div>
-          <p class="lead">
-            Siamo Energia Solare di Morello Eugenio: Eugenio segue personalmente sopralluoghi,
-            preventivi e cantieri. Niente centralini, niente pacchetti standard uguali per tutti.
+          <p class="lead">`n            Energia Solare di Morello Eugenio &egrave; un&apos;impresa di Vedano Olona guidata da Eugenio Morello.
+            Un solo referente per sopralluogo, progetto, posa e collaudo: niente passaggi tra uffici o call center.
+          
           </p>
           <p style="margin-top:1.25rem;color:var(--ink-soft)">
-            Interveniamo soprattutto in provincia di Varese, Como e Milano nord, su tetti in
-            coppo, lamiera e coperture piane. Conosciamo le pratiche dei comuni della zona e i
-            vincoli che spesso bloccano chi lavora da lontano senza conoscere il territorio.
+            Operiamo tra Varese, Como e Milano nord su tetti in coppo, lamiera e copertura piana.
+            Conosciamo le normative dei comuni della zona e le pratiche che servono prima di montare.
           </p>
-          <div class="stat-row">
-            <div class="stat">
-              <strong>3</strong>
-              <span>tecnologie: FV, termico, eolico</span>
-            </motion.div>
-            <div class="stat">
-              <strong>100%</strong>
-              <span>progetto, posa e collaudo interni</span>
-            </motion.div>
-            <div class="stat">
-              <strong>1</strong>
-              <span>referente per tutto il cantiere</span>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
 
     <section class="section section--dark" id="servizi">
       <div class="wrap reveal">
         <p class="eyebrow">Servizi</p>
-        <h2>Fotovoltaico, termico ed eolico.</h2>
-        <p class="lead" style="margin-top:1rem">
-          Ogni impianto viene dimensionato sui consumi reali, sull'esposizione del tetto e su
-          come usate casa o laboratorio. Niente moduli in più solo per gonfiare il preventivo.
-        </p>
+        <h2>Tre tecnologie, un unico interlocutore</h2>
+                <p class="lead" style="margin-top:1rem">Fotovoltaico, solare termico ed eolico dimensionati sui consumi reali e sul tetto — senza pacchetti preconfezionati.</p>
         <div class="services-grid">
           <article class="service-card">
             <span class="service-card__num">01</span>
             <h3>Impianti fotovoltaici</h3>
             <p>
-              Moduli scelti in base al tetto, inverter della potenza giusta, quadro ordinato e
-              documentato. Ci occupiamo di connessione in rete e collaudo con il distributore.
+              Produzione di energia elettrica con moduli adeguati al tetto, inverter dimensionato e quadro a norma.
+              Gestiamo connessione in rete, pratiche e collaudo con il distributore.
             </p>
             <ul>
               <li>Abitazioni e condomini</li>
@@ -145,9 +160,8 @@
             <span class="service-card__num">02</span>
             <h3>Impianti solari termici</h3>
             <p>
-              Acqua calda e integrazione al riscaldamento con collettori piani o sottovuoto.
-              Colleghiamo il nuovo impianto a caldaia o pompa di calore già presenti, senza
-              rifare tutto da zero se non serve.
+              Acqua calda sanitaria e supporto al riscaldamento con collettori piani o sottovuoto.
+              Integriamo caldaia o pompa di calore esistenti quando conviene, senza rifare ci&ograve; che gi&agrave; funziona.
             </p>
             <ul>
               <li>Collettori piani e sottovuoto</li>
@@ -159,8 +173,8 @@
             <span class="service-card__num">03</span>
             <h3>Impianti eolici</h3>
             <p>
-              Prima misuriamo il vento sul posto: un generatore mal posizionato rende poco e
-              crea problemi con i vicini. Lo proponiamo solo dove i numeri hanno senso.
+              Analizziamo vento e distanze prima di proporre un generatore: lo installiamo solo dove i numeri reggono
+              e nel rispetto delle norme di vicinato.
             </p>
             <ul>
               <li>Verifica del sito</li>
@@ -168,8 +182,8 @@
               <li>Integrazione con fotovoltaico</li>
             </ul>
           </article>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="progetti-preview">
@@ -177,10 +191,10 @@
         <div class="projects-header reveal">
           <div>
             <p class="eyebrow">Lavori</p>
-            <h2>Alcuni cantieri<br>che abbiamo fatto.</h2>
-          </motion.div>
+            <h2>Progetti sul territorio</h2>
+          </div>
           <a href="progetti.html" class="link-arrow">Tutti i progetti</a>
-        </motion.div>
+        </div>
 
         <div class="projects-mosaic reveal">
           <a href="progetti/villa-comignolo.html" class="project-tile project-tile--lg">
@@ -189,7 +203,7 @@
               <span class="project-tile__cat">Fotovoltaico</span>
               <h3>Villa a falde multiple</h3>
               <span>Vedano Olona</span>
-            </motion.div>
+            </div>
           </a>
           <a href="progetti/pensilina-industriale.html" class="project-tile project-tile--md">
             <img src="assets/img/pensilina-industriale.jpg" alt="Pensilina fotovoltaica">
@@ -197,7 +211,7 @@
               <span class="project-tile__cat">Commerciale</span>
               <h3>Pensilina logistica</h3>
               <span>Provincia di Varese</span>
-            </motion.div>
+            </div>
           </a>
           <a href="progetti/cantiere-residenziale.html" class="project-tile project-tile--sm">
             <img src="assets/img/cantiere-tecnico.jpg" alt="Tecnico in posa sul tetto">
@@ -205,7 +219,7 @@
               <span class="project-tile__cat">Cantiere</span>
               <h3>Posa in quota</h3>
               <span>Residenziale</span>
-            </motion.div>
+            </div>
           </a>
           <a href="progetti/copertura-piana.html" class="project-tile project-tile--wide">
             <img src="assets/img/copertura-piana-misto.jpg" alt="Copertura con FV e solare termico">
@@ -213,64 +227,59 @@
               <span class="project-tile__cat">FV + termico</span>
               <h3>Capannone misto</h3>
               <span>Copertura piana</span>
-            </motion.div>
+            </div>
           </a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="metodo" style="background:var(--paper-warm)">
       <div class="wrap reveal">
         <p class="eyebrow">Metodo</p>
-        <h2>Come lavoriamo,<br>passo per passo.</h2>
+        <h2>Dal sopralluogo al collaudo</h2>
         <ol class="process-list">
           <li class="process-item">
             <div>
               <h3>Sopralluogo</h3>
               <p style="color:var(--ink-soft);margin-top:0.5rem">
-                Saliamo sul tetto, prendiamo misure e foto, segniamo zone in ombra e stato di
-                tegole o lamiera. Senza sopralluogo non mandiamo un preventivo serio.
+                Visita in loco, misure, foto e verifica di ombre e stato del manto. Senza sopralluogo non inviamo un preventivo credibile.
               </p>
-            </motion.div>
+            </div>
           </li>
           <li class="process-item">
             <div>
               <h3>Progetto e pratiche</h3>
               <p style="color:var(--ink-soft);margin-top:0.5rem">
-                Schema elettrico, stima della producibilità, documenti per il comune e per il GSE
-                quando servono. Vi lasciamo copie chiare, non solo moduli tecnici incomprensibili.
+                Progetto elettrico, stima di produzione e documentazione per comune e GSE. Documenti chiari, spiegati in sede.
               </p>
-            </motion.div>
+            </div>
           </li>
           <li class="process-item">
             <div>
               <h3>Installazione</h3>
               <p style="color:var(--ink-soft);margin-top:0.5rem">
-                Ponteggi o linee vita se necessari, posa strutture e pannelli, allaccio al quadro.
-                A fine giornata il tetto resta in ordine e i materiali fuori passaggio.
+                Posa strutture e moduli, allaccio al quadro e cantiere ordinato. Eugenio segue i lavori in prima persona.
               </p>
-            </motion.div>
+            </div>
           </li>
           <li class="process-item">
             <div>
               <h3>Collaudo</h3>
               <p style="color:var(--ink-soft);margin-top:0.5rem">
-                Prove di terra, avvio inverter, registrazione al portale di monitoraggio. Vi
-                spieghiamo cosa controllare nei primi mesi di produzione.
+                Collaudo, avvio impianto e registrazione al monitoraggio. Vi indichiamo cosa controllare nei primi mesi.
               </p>
-            </motion.div>
+            </div>
           </li>
         </ol>
-      </motion.div>
+      </div>
     </section>
 
     <section class="section" id="contatti">
       <div class="wrap reveal">
         <p class="eyebrow">Contatti</p>
-        <h2>Scrivici o vieni in sede.</h2>
+        <h2>Richiedi un sopralluogo</h2>
         <p class="lead" style="margin-top:0.75rem;margin-bottom:2.5rem">
-          Portate bollette recenti e, se li avete, planimetrie del tetto: bastano per una prima
-          valutazione. In zona Varese il sopralluogo non ha costi di uscita.
+          Scrivici o vieni in sede con le bollette. In provincia di Varese il sopralluogo &egrave; gratuito.
         </p>
 
         <div class="contact-section">
@@ -280,21 +289,21 @@
             <input type="hidden" name="_template" value="table">
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <h3>Modulo di contatto</h3>
-            <p>Compilate i campi: vi rispondiamo di solito entro un giorno lavorativo.</p>
+            <p>Rispondiamo di solito entro un giorno lavorativo.</p>
             <div class="form-row">
               <div class="form-field">
                 <label for="nome">Nome e cognome</label>
                 <input type="text" id="nome" name="nome" required autocomplete="name">
-              </motion.div>
+              </div>
               <div class="form-field">
                 <label for="telefono">Telefono</label>
                 <input type="tel" id="telefono" name="telefono" required autocomplete="tel" placeholder="329 ...">
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
             <div class="form-field">
               <label for="email">Email</label>
               <input type="email" id="email" name="email" autocomplete="email">
-            </motion.div>
+            </div>
             <div class="form-field">
               <label for="servizio">Di cosa avete bisogno?</label>
               <select id="servizio" name="servizio" required>
@@ -304,11 +313,11 @@
                 <option value="Eolico">Impianto eolico</option>
                 <option value="Più tecnologie">Più tecnologie / non so ancora</option>
               </select>
-            </motion.div>
+            </div>
             <div class="form-field">
               <label for="messaggio">Messaggio</label>
               <textarea id="messaggio" name="messaggio" placeholder="Indirizzo del tetto, consumi indicativi, tempi desiderati..."></textarea>
-            </motion.div>
+            </div>
             <button type="submit" class="btn">Invia richiesta</button>
             <p id="form-msg" class="form-msg" role="status"></p>
           </form>
@@ -334,23 +343,23 @@
                   Lun–Ven 8:00–19:30 · Sabato su appuntamento
                 </li>
               </ul>
-            </motion.div>
+            </div>
 
             <div class="map-block">
               <div class="map-block__head">
                 <h3>Come raggiungerci</h3>
                 <a href="https://maps.app.goo.gl/muuLyYyBfFcwyJpD9" class="map-link" target="_blank" rel="noopener">Apri in Google Maps</a>
-              </motion.div>
+              </div>
               <iframe
                 title="Mappa - Energia Solare di Morello Eugenio, Vedano Olona"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.google.com/maps?q=Energia+Solare+di+Morello+Eugenio,+Via+Torino+4,+21040+Vedano+Olona+VA&hl=it&z=16&output=embed">
               </iframe>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -360,34 +369,37 @@
         <div>
           <a href="index.html" class="logo">
             <span class="logo__name">Energia Solare di Morello Eugenio</span>
-            <span class="logo__sub">Fotovoltaico · solare termico · eolico</span>
+            <span class="logo__sub">Dal tetto alla bolletta</span>
           </a>
           <p style="margin-top:1rem;max-width:32ch">
             P.IVA 1470745430 · Via Torino 4, 21040 Vedano Olona (VA)
           </p>
-        </motion.div>
+        </div>
         <div class="footer-col">
           <h4>Navigazione</h4>
           <a href="#chi-siamo">Chi siamo</a>
           <a href="#servizi">Servizi</a>
           <a href="progetti.html">Progetti</a>
           <a href="#contatti">Contatti</a>
-        </motion.div>
+        </div>
         <div class="footer-col">
           <h4>Contatto rapido</h4>
           <a href="tel:+393292354847">329 235 4847</a>
           <a href="https://wa.me/393292354847" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://maps.app.goo.gl/muuLyYyBfFcwyJpD9" target="_blank" rel="noopener">Indicazioni</a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
       <div class="footer-bottom">
         <span>© 2026 Energia Solare di Morello Eugenio</span>
         <span>Lombardia · Varese e provincia</span>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   </footer>
 
+  <script src="assets/js/promo-countdown.js"></script>
   <script src="assets/js/intro.js"></script>
+  <script src="assets/js/stats.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+

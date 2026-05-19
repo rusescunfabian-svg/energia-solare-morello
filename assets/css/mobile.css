@@ -147,6 +147,12 @@ body.has-promo-bar .hero__content {
   line-height: 1.15;
 }
 
+.hero__slogan {
+  font-size: clamp(1.05rem, 4.5vw, 1.2rem);
+  max-width: none;
+  margin-bottom: 1rem;
+}
+
 .hero__text {
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
