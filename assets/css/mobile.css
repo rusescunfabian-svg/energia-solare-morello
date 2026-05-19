@@ -30,6 +30,10 @@ html {
   margin-right: 0;
 }
 
+.logo--img .logo__img {
+  height: 2.65rem;
+}
+
 .logo__line {
   font-size: 0.82rem;
   line-height: 1.25;
@@ -57,7 +61,7 @@ html {
   inset: 0;
   z-index: 99;
   background: var(--paper);
-  padding: calc(var(--header-h) + 1.5rem) 1.5rem 2rem;
+  padding: calc(var(--header-h) + var(--promo-h) + 1.5rem) 1.5rem 2rem;
   align-items: stretch;
   gap: 0;
   overflow-y: auto;
@@ -116,21 +120,34 @@ html {
   right: 0.5rem;
 }
 
-/* Hero — o coloană, imagine sus */
+/* Hero — mobil: logo, imagine, text */
 .hero {
   display: flex;
   flex-direction: column;
   min-height: auto;
 }
 
+.hero__logo-wrap {
+  order: -2;
+  padding: calc(var(--header-h) + 0.5rem) 0 0.25rem;
+}
+
+.hero__logo {
+  width: min(220px, 76vw);
+}
+
 .hero__visual {
   order: -1;
-  min-height: 42vh;
-  max-height: 50vh;
+  min-height: 38vh;
+  max-height: 46vh;
 }
 
 .hero__content {
-  padding: calc(var(--header-h) + var(--promo-h) + 1.25rem) 0 2.5rem;
+  padding: 1.25rem 0 2.5rem;
+}
+
+body.has-promo-bar .hero__content {
+  padding-top: calc(var(--header-h) + var(--promo-h) + 1.25rem);
 }
 
 .hero__content::before {
@@ -179,27 +196,32 @@ html {
   padding-top: 1.25rem;
 }
 
-/* Statistiche — griglia 2x2 pulita */
+/* Statistiche — griglia 2x2, aliniate */
 .home-stats {
   padding: 2rem 0 2.5rem;
 }
 
 .stats-grid {
   gap: 0.65rem;
+  align-items: stretch;
 }
 
 .stat-item {
-  min-height: 6.75rem;
-  padding: 1rem 0.5rem;
+  min-height: 7.25rem;
+  padding: 1.1rem 0.5rem;
+  justify-content: center;
 }
 
 .stat-item__num {
-  font-size: clamp(2rem, 10vw, 2.65rem);
+  font-size: clamp(2.1rem, 11vw, 2.75rem);
+  min-height: 1.1em;
 }
 
 .stat-item__label {
-  font-size: 0.68rem;
-  margin-top: 0.5rem;
+  font-size: 0.66rem;
+  margin-top: 0.55rem;
+  line-height: 1.35;
+  hyphens: none;
 }
 
 /* Intro */
@@ -212,10 +234,15 @@ html {
   padding: 0 1.25rem;
 }
 
-.intro-splash__sun-wrap {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 1.5rem;
+.intro-splash__logo-wrap {
+  margin-bottom: 1rem;
+}
+
+.intro-splash__logo {
+  width: min(150px, 52vw);
+  height: auto;
+  display: block;
+  margin-inline: auto;
 }
 
 .intro-splash__brand {
@@ -374,6 +401,10 @@ html {
     padding: clamp(7.5rem, 16vh, 10rem) clamp(2rem, 5vw, 4rem) clamp(3rem, 8vh, 5rem);
   }
 
+  body.has-promo-bar .hero__content {
+    padding-top: calc(clamp(7.5rem, 16vh, 10rem) + var(--promo-h));
+  }
+
   .hero__content::before {
     display: block;
   }
@@ -396,7 +427,46 @@ html {
     flex-direction: row;
     flex-wrap: wrap;
   }
-.intro-splash__sun-wrap {
+
+  .stats-ribbon {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 10rem;
+    padding: 1rem 0.25rem 0;
+  }
+
+  .stats-ribbon__sep {
+    display: block;
+  }
+
+  .stat-pill {
+    flex: 1 1 0;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0.5rem 1.25rem;
+    transform: translateY(16px) !important;
+  }
+
+  .home-stats.is-animated .stat-pill--low {
+    transform: translateY(8px) !important;
+  }
+
+  .home-stats.is-animated .stat-pill--mid {
+    transform: translateY(2px) !important;
+  }
+
+  .home-stats.is-animated .stat-pill--high {
+    transform: translateY(-10px) !important;
+  }
+
+  .stat-pill__value {
+    font-size: clamp(2.75rem, 5vw, 4rem);
+  }
+
+  .intro-splash__sun-wrap {
     width: clamp(140px, 28vw, 200px);
     height: clamp(140px, 28vw, 200px);
   }
