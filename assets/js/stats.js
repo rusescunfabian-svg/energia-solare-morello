@@ -5,53 +5,68 @@
   const counters = [...section.querySelectorAll('[data-count]')];
   if (!counters.length) return;
 
-  const DURATION = 2600;
-  const STAGGER = 140;
+  const DEFAULT_DURATION = 2800;
+  const STAGGER = 120;
   let played = false;
   let introDone = false;
 
+  const formatIT = (value, decimals = 0) => {
+    const n = decimals ? value.toFixed(decimals) : String(Math.round(value));
+    const [intPart, decPart] = n.split('.');
+    const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return decPart ? `${grouped},${decPart}` : grouped;
+  };
+
+  const displayValue = (el, value) => {
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const useIT = el.dataset.format === 'it';
+    const body = useIT ? formatIT(value, decimals) : decimals ? value.toFixed(decimals).replace('.', ',') : String(Math.round(value));
+    el.textContent = `${prefix}${body}${suffix}`;
+  };
+
   const resetEl = (el) => {
     const decimals = parseInt(el.dataset.decimals || '0', 10);
-    el.textContent = decimals ? `0,${'0'.repeat(decimals)}` : '0';
-    const item = el.closest('.stat-item');
-    item?.classList.remove('is-counting', 'is-done');
+    const prefix = el.dataset.prefix || '';
+    if (el.dataset.format === 'it') {
+      el.textContent = `${prefix}${decimals ? '0,' + '0'.repeat(decimals) : '0'}`;
+    } else {
+      el.textContent = prefix + (decimals ? `0,${'0'.repeat(decimals)}` : '0');
+    }
+    el.closest('.stat-item')?.classList.remove('is-counting', 'is-done');
   };
 
   const runCounter = (el) => {
     const target = parseFloat(el.dataset.count, 10);
-    const decimals = parseInt(el.dataset.decimals || '0', 10);
-    const suffix = el.dataset.suffix || '';
+    const duration = parseInt(el.dataset.duration || String(DEFAULT_DURATION), 10);
     const item = el.closest('.stat-item');
     const start = performance.now();
-    let lastInt = -1;
+    let lastShown = '';
 
     item?.classList.add('is-counting');
 
     const frame = (now) => {
-      const t = Math.min((now - start) / DURATION, 1);
+      const t = Math.min((now - start) / duration, 1);
       const eased = 1 - (1 - t) ** 4;
       const val = target * eased;
+      const next = el.dataset.format === 'it'
+        ? formatIT(val, parseInt(el.dataset.decimals || '0', 10))
+        : String(Math.round(val));
 
-      if (decimals) {
-        el.textContent = val.toFixed(decimals).replace('.', ',');
-      } else {
-        const shown = Math.round(val);
-        if (shown !== lastInt) {
-          lastInt = shown;
-          el.classList.remove('is-tick');
-          void el.offsetWidth;
-          el.classList.add('is-tick');
-        }
-        el.textContent = String(shown);
+      if (next !== lastShown) {
+        lastShown = next;
+        el.classList.remove('is-tick');
+        void el.offsetWidth;
+        el.classList.add('is-tick');
       }
+
+      displayValue(el, val);
 
       if (t < 1) {
         requestAnimationFrame(frame);
       } else {
-        el.textContent = decimals
-          ? target.toFixed(decimals).replace('.', ',')
-          : String(Math.round(target));
-        if (suffix) el.textContent += suffix;
+        displayValue(el, target);
         el.classList.remove('is-tick');
         item?.classList.remove('is-counting');
         item?.classList.add('is-done');
@@ -79,11 +94,8 @@
   const watchInView = () => {
     if (played) return;
 
-    const visible =
-      section.getBoundingClientRect().top < window.innerHeight * 0.88 &&
-      section.getBoundingClientRect().bottom > 40;
-
-    if (visible) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 30) {
       play();
       return;
     }
@@ -100,14 +112,14 @@
           io.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      { threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
     );
     io.observe(section);
   };
 
   const onIntroDone = () => {
     introDone = true;
-    setTimeout(watchInView, 250);
+    setTimeout(watchInView, 200);
   };
 
   const boot = () => {
