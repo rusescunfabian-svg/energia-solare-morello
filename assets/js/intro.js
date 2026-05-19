@@ -15,7 +15,7 @@
       splash.classList.add('is-done');
       document.body.classList.remove('is-intro-locked');
       document.dispatchEvent(new CustomEvent('intro-done'));
-    }, 900);
+    }, 550);
   };
 
   document.body.classList.add('is-intro-locked');
@@ -107,6 +107,6 @@
 
   setTimeout(() => {
     if (!finished) finish();
-  }, 7200);
+  }, 5000);
 
 })();

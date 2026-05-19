@@ -2,57 +2,56 @@
   const section = document.querySelector('.home-stats');
   if (!section) return;
 
-  const counters = section.querySelectorAll('[data-count]');
+  const counters = [...section.querySelectorAll('[data-count]')];
   if (!counters.length) return;
 
+  const DURATION = 1100;
   let played = false;
 
-  const animate = (el) => {
-    const card = el.closest('.stat-pill, .stat-card');
-    const target = parseFloat(el.dataset.count, 10);
-    const decimals = parseInt(el.dataset.decimals || '0', 10);
-    const suffix = el.dataset.suffix || '';
-    const duration = 2000;
+  const animateAll = () => {
     const start = performance.now();
 
-    card?.classList.add('is-counting');
+    counters.forEach((el) => {
+      const card = el.closest('.stat-pill, .stat-card');
+      const target = parseFloat(el.dataset.count, 10);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const suffix = el.dataset.suffix || '';
 
-    const tick = (now) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - (1 - t) ** 4;
-      const val = target * eased;
-      el.textContent = decimals
-        ? val.toFixed(decimals).replace('.', ',')
-        : String(Math.round(val));
-      if (t < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        el.textContent += suffix;
-        card?.classList.remove('is-counting');
-        card?.classList.add('is-done');
-      }
-    };
-    requestAnimationFrame(tick);
+      card?.classList.add('is-counting');
+
+      const tick = (now) => {
+        const t = Math.min((now - start) / DURATION, 1);
+        const eased = 1 - (1 - t) ** 3;
+        const val = target * eased;
+
+        el.textContent = decimals
+          ? val.toFixed(decimals).replace('.', ',')
+          : String(Math.round(val));
+
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = decimals
+            ? target.toFixed(decimals).replace('.', ',')
+            : String(Math.round(target));
+          el.textContent += suffix;
+          card?.classList.remove('is-counting');
+          card?.classList.add('is-done');
+        }
+      };
+
+      requestAnimationFrame(tick);
+    });
   };
 
   const play = () => {
     if (played) return;
     played = true;
     section.classList.add('is-animated');
-    counters.forEach((el, i) => {
-      setTimeout(() => animate(el), 180 + i * 200);
-    });
+    animateAll();
   };
 
-  const tryPlay = () => {
-    if (played) return;
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.92) play();
-  };
-
-  document.addEventListener('intro-done', () => {
-    setTimeout(play, 400);
-  });
+  document.addEventListener('intro-done', play, { once: true });
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
@@ -62,13 +61,15 @@
           io.disconnect();
         }
       },
-      { threshold: 0.2, rootMargin: '0px 0px -5% 0px' }
+      { threshold: 0.15 }
     );
     io.observe(section);
+  } else {
+    play();
   }
 
   window.addEventListener('load', () => {
     const splash = document.getElementById('intro-splash');
-    if (!splash || splash.classList.contains('is-done')) tryPlay();
+    if (!splash || splash.classList.contains('is-done')) play();
   });
 })();
