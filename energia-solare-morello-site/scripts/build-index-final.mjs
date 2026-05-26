@@ -1,0 +1,362 @@
+import { writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const MAPS = 'https://maps.app.goo.gl/muuLyYyBfFcwyJpD9';
+
+const html = `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Energia Solare di Morello Eugenio | Ingegneria Energetica Varese</title>
+  <meta name="description" content="Impianti fotovoltaici, solari termici ed eolici a Vedano Olona e provincia di Varese. Progettazione e installazione diretta.">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;700&display=swap');
+    :root {
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); }
+    h1, h2, h3, .font-display { font-family: var(--font-display); }
+    .blur-card {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: 0 8px 32px rgba(15,23,42,.06);
+    }
+    .blur-card-gold { border-color: rgba(245,158,11,.35); }
+    .logo-plate {
+      background: #fff;
+      border: 2px solid rgba(245,158,11,.4);
+      box-shadow: 0 12px 40px rgba(15,23,42,.12);
+    }
+    .home-screen { min-height: 100dvh; min-height: 100svh; }
+    .stats-screen { min-height: 100dvh; min-height: 100svh; scroll-margin-top: 4rem; }
+    .home-bg {
+      background-image: linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(244,247,251,.94) 55%, rgba(244,247,251,.98) 100%),
+        url('assets/img/hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .btn-call, .btn-wa, .btn-scroll {
+      display: flex; align-items: center; justify-content: center; gap: .75rem;
+      width: 100%; padding: 1rem 1.25rem; border-radius: .75rem; font-weight: 700;
+    }
+    .btn-call:active, .btn-wa:active, .btn-scroll:active { transform: scale(.98); }
+    .stat-mega {
+      padding: 2rem 1rem;
+      border-radius: 1rem;
+      background: linear-gradient(180deg, rgba(255,251,235,.9), #fff);
+      border: 1px solid rgba(245,158,11,.25);
+    }
+    .figures.is-live [data-stat-row] { animation: fadeUp .6s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    [data-stat-row] { opacity: 0; }
+    .figures.is-live [data-stat-row] { opacity: 1; }
+    .calc-range { accent-color: #f59e0b; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="selection:bg-amber-200 selection:text-slate-900 overflow-x-hidden">
+
+  <motion.div class="bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-medium text-xs tracking-widest uppercase py-2.5 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-1">
+    <motion.div><i class="fa-solid fa-certificate mr-1.5"></i> Impianti certificati DM 37/08 · Provincia di Varese</motion.div>
+    <motion.div>Consulenza: <a href="tel:+393292354847" class="font-bold hover:underline">329 235 4847</a></motion.div>
+  </motion.div>
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 px-4 md:px-6 py-3 shadow-sm">
+    <motion.div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+      <a href="index.html" class="shrink-0">
+        <img src="assets/img/logo.svg" alt="Energia Solare di Morello Eugenio" class="h-11 w-auto logo-plate rounded-lg p-1">
+      </a>
+      <motion.div class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="#home" class="hover:text-amber-600 transition">Home</a>
+        <a href="#numeri" class="hover:text-amber-600 transition">Numeri</a>
+        <a href="#risparmio" class="hover:text-amber-600 transition">Risparmio</a>
+        <a href="#ingegneria" class="hover:text-amber-600 transition">Sistemi</a>
+        <a href="#portfolio-reale" class="text-amber-600 font-bold">Cantieri</a>
+        <a href="#contatti" class="hover:text-amber-600 transition">Contatti</a>
+        <a href="progetti.html" class="hover:text-amber-600 transition">Progetti</a>
+      </motion.div>
+      <motion.div class="flex items-center gap-2">
+        <a href="tel:+393292354847" class="hidden sm:inline-flex bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg">
+          <i class="fa-solid fa-phone mr-1"></i> Chiama
+        </a>
+        <button id="menu-btn" type="button" class="lg:hidden text-slate-800 p-2 border border-slate-300 rounded-lg" aria-label="Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </motion.div>
+    </motion.div>
+    <motion.div id="mobile-nav" class="hidden lg:hidden mt-3 pb-2 border-t border-slate-200 pt-3 flex flex-col gap-2 text-sm text-slate-600">
+      <a href="#home" class="py-2">Home</a>
+      <a href="#numeri" class="py-2">Numeri</a>
+      <a href="#risparmio" class="py-2">Calcola risparmio</a>
+      <a href="#contatti" class="py-2 text-amber-600 font-bold">Modulo sopralluogo</a>
+      <a href="tel:+393292354847" class="py-2 font-bold text-slate-900">329 235 4847</a>
+    </motion.div>
+  </nav>
+
+  <section id="home" class="home-screen home-bg relative flex flex-col px-4 md:px-6 py-8 md:py-12 border-b border-slate-200">
+    <motion.div class="max-w-lg mx-auto w-full flex-1 flex flex-col relative z-10 md:max-w-xl">
+      <motion.div class="flex justify-center mb-5">
+        <motion.div class="logo-plate rounded-2xl p-4 md:p-6">
+          <img src="assets/img/logo.svg" alt="Logo" class="h-28 sm:h-36 w-auto mx-auto">
+        </motion.div>
+      </motion.div>
+      <motion.div class="text-center space-y-2 mb-5">
+        <p class="text-xs uppercase tracking-[0.2em] text-amber-600 font-bold">Vedano Olona · Varese</p>
+        <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight font-display">
+          Fotovoltaico, termico ed eolico<br><span class="text-amber-600">con Eugenio Morello</span>
+        </h1>
+        <p class="text-slate-600 text-sm">Sopralluogo gratuito in provincia di Varese. Un referente, zero call center.</p>
+      </motion.div>
+      <motion.div class="space-y-3 mb-5">
+        <a href="tel:+393292354847" class="btn-call bg-slate-900 text-white hover:bg-slate-800 shadow-lg text-lg">
+          <i class="fa-solid fa-phone text-amber-400"></i><span>329 235 4847</span>
+        </a>
+        <a href="https://wa.me/393292354847?text=Buongiorno%2C%20vorrei%20un%20sopralluogo." class="btn-wa bg-green-600 hover:bg-green-500 text-white" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp text-xl"></i><span>WhatsApp</span>
+        </a>
+        <a href="#contatti" class="btn-scroll bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm uppercase tracking-wider shadow-md">
+          <i class="fa-solid fa-file-pen"></i><span>Compila il modulo sopralluogo</span>
+        </a>
+      </motion.div>
+      <motion.div class="blur-card blur-card-gold rounded-2xl p-4 text-center text-sm text-slate-600">
+        <p><i class="fa-solid fa-chevron-down text-amber-500 mr-1"></i> Scorri per i numeri e il simulatore di risparmio</p>
+      </motion.div>
+      <a href="#numeri" class="mt-4 text-center text-xs text-slate-500 hover:text-amber-600 py-2">I nostri risultati <i class="fa-solid fa-angles-down ml-1"></i></a>
+    </motion.div>
+  </section>
+
+  <section id="numeri" class="figures stats-screen bg-white border-y border-slate-200 py-16 md:py-20 flex flex-col justify-center">
+    <motion.div class="max-w-7xl mx-auto px-4 md:px-6">
+      <motion.div class="text-center mb-10 md:mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-amber-600">Track record</span>
+        <h2 class="mt-3 text-2xl md:text-3xl font-display font-bold text-slate-900">Numeri che contano</h2>
+      </motion.div>
+      <motion.div class="stat-mega max-w-4xl mx-auto text-center mb-10 md:mb-14">
+        <p class="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-slate-900 leading-none">
+          <span class="text-amber-600 figures__count" data-count="3170000" data-prefix="+" data-format="it" data-ms="6200" data-mega="true">0</span>
+          <span class="text-amber-500 text-2xl md:text-4xl font-normal"> kWh</span>
+        </p>
+        <p class="text-slate-500 mt-3 text-sm md:text-base">energia pulita prodotta dai nostri impianti</p>
+      </motion.div>
+      <motion.div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+        <motion.div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="100" data-prefix="+" data-ms="3400">0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">impianti</p>
+        </motion.div>
+        <motion.div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="5" data-decimals="1" data-ms="3200">0,0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">Google · 7 rec.</p>
+        </motion.div>
+        <motion.div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="100" data-prefix="+" data-ms="3400">0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">clienti</p>
+        </motion.div>
+        <motion.div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="3" data-ms="3000">0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">tecnologie</p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="chi-siamo" class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 bg-[var(--bg)]">
+    <motion.div class="grid lg:grid-cols-2 gap-10 items-start">
+      <motion.div class="space-y-4">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Chi siamo</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900">Artigiani dell'energia a Vedano Olona</h2>
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed">Impianti fotovoltaici, solari termici ed eolici con posa diretta. Via Torino 4 — provincia di Varese, Como e Milano nord.</p>
+      </motion.div>
+      <motion.div class="blur-card rounded-2xl p-6 space-y-3 text-sm text-slate-600">
+        <p><strong class="text-slate-900">1.</strong> Sopralluogo e bollette</p>
+        <p><strong class="text-slate-900">2.</strong> Preventivo scritto</p>
+        <p><strong class="text-slate-900">3.</strong> Posa in casa</p>
+        <p><strong class="text-slate-900">4.</strong> Collaudo e assistenza</p>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="ingegneria" class="bg-white border-y border-slate-200 py-16 md:py-24">
+    <motion.div class="max-w-7xl mx-auto px-4 md:px-6">
+      <motion.div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Sistemi</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900">Tre tecnologie, un referente</h2>
+      </motion.div>
+      <motion.div class="grid md:grid-cols-3 gap-6">
+        <article id="fotovoltaico" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-solar-panel text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Fotovoltaico</h3>
+          <p class="text-slate-600 text-sm">Coppo, lamiera o tetto piano. Inverter e pratiche GSE.</p>
+        </article>
+        <article id="eolico" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-wind text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Eolico</h3>
+          <p class="text-slate-600 text-sm">Minieolico dove ha senso tecnico e normativo.</p>
+        </article>
+        <article id="termico" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-temperature-arrow-up text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Solare termico</h3>
+          <p class="text-slate-600 text-sm">ACS e supporto al riscaldamento esistente.</p>
+        </article>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="portfolio-reale" class="py-16 md:py-24 bg-[var(--bg)]">
+    <motion.div class="max-w-7xl mx-auto px-4 md:px-6 space-y-12">
+      <motion.div class="space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Cantieri reali</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900 font-display">Foto dai nostri tetti</h2>
+        <a href="progetti.html" class="text-amber-600 text-sm font-bold hover:underline">Galleria completa →</a>
+      </motion.div>
+      <motion.div class="grid md:grid-cols-3 gap-4">
+        <a href="progetti/villa-comignolo.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+          <img src="assets/img/hero.jpg" alt="Villa fotovoltaico" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <p class="p-3 text-sm font-bold text-slate-800">Tetto in coppo</p>
+        </a>
+        <a href="progetti/pensilina-industriale.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+          <img src="assets/img/pensilina-industriale.jpg" alt="Pensilina" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <p class="p-3 text-sm font-bold text-slate-800">Pensilina industriale</p>
+        </a>
+        <a href="progetti/copertura-piana.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+          <img src="assets/img/copertura-piana-misto.jpg" alt="Copertura piana" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <p class="p-3 text-sm font-bold text-slate-800">FV + termico</p>
+        </a>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="risparmio" class="bg-white border-y border-slate-200 py-16 md:py-24">
+    <motion.div class="max-w-7xl mx-auto px-4 md:px-6">
+      <motion.div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Simulatore</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 font-display">Quanto puoi risparmiare?</h2>
+        <p class="text-slate-500 text-sm">Stima indicativa — per il calcolo preciso serve il sopralluogo.</p>
+      </motion.div>
+      <motion.div class="grid lg:grid-cols-2 gap-8 items-start">
+        <form id="savings-form" class="blur-card blur-card-gold rounded-2xl p-6 md:p-8 space-y-5">
+          <motion.div>
+            <label for="calc-bill" class="block text-xs uppercase tracking-wider text-slate-500 mb-2">Bolletta mensile (€)</label>
+            <input type="number" id="calc-bill" min="0" step="10" value="180" class="w-full border border-slate-200 rounded-lg px-4 py-3 text-lg text-slate-900 focus:border-amber-500 outline-none bg-white">
+          </motion.div>
+          <motion.div>
+            <label for="calc-kwh" class="block text-xs uppercase tracking-wider text-slate-500 mb-2">Consumo kWh/mese (opz.)</label>
+            <input type="number" id="calc-kwh" min="0" step="50" placeholder="Da bolletta" class="w-full border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white">
+          </motion.div>
+          <motion.div>
+            <label for="calc-cover" class="flex justify-between text-xs uppercase tracking-wider text-slate-500 mb-2">
+              <span>Copertura fabbisogno</span><span id="calc-cover-val" class="text-amber-600 font-bold">70%</span>
+            </label>
+            <input type="range" id="calc-cover" min="30" max="95" value="70" class="w-full calc-range">
+          </motion.div>
+          <a href="#contatti" class="inline-flex items-center gap-2 text-amber-600 font-bold text-sm hover:underline"><i class="fa-solid fa-file-pen"></i> Richiedi preventivo con modulo sopralluogo</a>
+        </form>
+        <motion.div class="space-y-4">
+          <motion.div class="blur-card rounded-2xl p-6 border border-amber-200">
+            <p class="text-xs uppercase text-slate-500 mb-1">Risparmio annuo stimato</p>
+            <p id="calc-out-year" class="text-4xl font-display font-bold text-amber-600">€ 0</p>
+          </motion.div>
+          <motion.div class="blur-card rounded-2xl p-6">
+            <p class="text-xs uppercase text-slate-500 mb-1">In 25 anni</p>
+            <p id="calc-out-25" class="text-3xl font-display font-bold text-slate-900">€ 0</p>
+          </motion.div>
+          <motion.div class="grid grid-cols-2 gap-3">
+            <motion.div class="blur-card rounded-xl p-4"><p class="text-xs text-slate-500">kWh/anno</p><p id="calc-out-kwh" class="font-bold text-slate-900">0</p></motion.div>
+            <motion.div class="blur-card rounded-xl p-4"><p class="text-xs text-slate-500">CO₂/anno</p><p id="calc-out-co2" class="font-bold text-slate-900">0</p></motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="contatti" class="bg-[var(--bg)] py-16 md:py-24 border-t border-slate-200 scroll-mt-20">
+    <motion.div class="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-10">
+      <motion.div class="space-y-4">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Contatti</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900 font-display">Richiedi un sopralluogo gratuito</h2>
+        <p class="text-slate-600 text-sm">In provincia di Varese l'uscita non ha costi. Portate le bollette.</p>
+        <ul class="space-y-3 text-sm text-slate-700">
+          <li><i class="fa-solid fa-phone text-amber-500 w-5"></i> <a href="tel:+393292354847" class="font-bold text-lg hover:text-amber-600">329 235 4847</a></li>
+          <li><i class="fa-brands fa-whatsapp text-green-600 w-5"></i> <a href="https://wa.me/393292354847" class="hover:text-amber-600" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><i class="fa-solid fa-location-dot text-amber-500 w-5"></i> Via Torino 4, Vedano Olona (VA)</li>
+        </ul>
+      </motion.div>
+      <form id="contact-form" class="blur-card blur-card-gold rounded-2xl p-6 md:p-8 space-y-4" action="https://formsubmit.co/info@energiasolaremorello.it" method="POST">
+        <input type="hidden" name="_subject" value="Richiesta sopralluogo dal sito">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+        <motion.div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Nome</label>
+          <input type="text" name="nome" required class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white">
+        </motion.div>
+        <motion.div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Telefono</label>
+          <input type="tel" name="telefono" required class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white">
+        </motion.div>
+        <motion.div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Messaggio</label>
+          <textarea name="messaggio" rows="4" class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white" placeholder="Indirizzo, tipo tetto, bolletta..."></textarea>
+        </motion.div>
+        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold uppercase tracking-wider py-4 rounded-lg">Invia richiesta</button>
+        <p id="form-msg" class="text-sm text-slate-500 text-center" role="status"></p>
+      </form>
+    </motion.div>
+  </section>
+
+  <section id="google-business" class="bg-white border-t border-slate-200 py-14 px-4 md:px-6">
+    <motion.div class="max-w-3xl mx-auto text-center space-y-5">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Google Business</span>
+      <h2 class="text-xl md:text-2xl font-bold text-slate-900">5,0 · 7 recensioni su Google</h2>
+      <motion.div class="flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
+        <a href="${MAPS}" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800"><i class="fa-brands fa-google mr-1"></i> Google Maps</a>
+        <a href="${MAPS}" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg border border-amber-400 text-amber-700 font-bold text-sm">Leggi recensioni</a>
+        <a href="${MAPS}" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-amber-500 text-slate-950 font-bold text-sm hover:bg-amber-400">Lascia una recensione</a>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <footer class="border-t border-slate-200 py-10 px-4 text-center text-xs text-slate-500 bg-[var(--bg)]">
+    <img src="assets/img/logo.svg" alt="" class="h-12 mx-auto mb-3 logo-plate rounded-lg p-1">
+    <p>© 2026 Energia Solare di Morello Eugenio · P.IVA 1470745430 · Via Torino 4, Vedano Olona (VA)</p>
+  </footer>
+
+  <a href="https://wa.me/393292354847" class="fixed bottom-5 right-5 z-40 bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg text-2xl" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script src="assets/js/stats.js"></script>
+  <script src="assets/js/savings-calc.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('form-msg');
+    if (form && msg) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.textContent = 'Invio in corso...';
+        try {
+          const r = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          msg.textContent = r.ok ? 'Messaggio inviato. Vi richiameremo presto.' : 'Errore. Chiamate il 329 235 4847.';
+          if (r.ok) form.reset();
+        } catch { msg.textContent = 'Errore di rete. Chiamate il 329 235 4847.'; }
+      });
+    }
+    if (window.location.hash === '#contatti') {
+      setTimeout(() => document.getElementById('contatti')?.scrollIntoView({ behavior: 'smooth' }), 300);
+    }
+  </script>
+</body>
+</html>`;
+
+const out = html.split('motion.div').join('div');
+writeFileSync(join(root, 'index.html'), out, 'utf8');
+console.log('Built', out.length, 'chars, motion tags:', (out.match(/motion\.div/g) || []).length);
