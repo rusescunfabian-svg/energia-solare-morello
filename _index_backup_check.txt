@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Energia Solare di Morello Eugenio | Ingegneria Energetica Varese</title>
+  <meta name="description" content="Impianti fotovoltaici, solari termici ed eolici a Vedano Olona e provincia di Varese. Progettazione e installazione diretta.">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;700&display=swap');
+    :root {
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+    }
+    body { font-family: var(--font-sans); background-color: #0b111e; color: #f8fafc; }
+    h1, h2, h3, .font-display { font-family: var(--font-display); }
+    .solar-glow {
+      position: absolute; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(234, 179, 8, 0.07) 0%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+    .blur-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .figures.is-live [data-stat-row] { animation: fadeUp 0.5s ease forwards; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    [data-stat-row] { opacity: 0; }
+    .figures.is-live [data-stat-row] { opacity: 1; }
+  </style>
+</head>
+<body class="selection:bg-yellow-500 selection:text-slate-900 overflow-x-hidden">
+
+  <motion.div class="bg-amber-500 text-slate-950 font-medium text-xs tracking-widest uppercase py-2.5 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-1 border-b border-amber-600/20">
+    <div><i class="fa-solid fa-gears mr-1.5"></i> Impianti certificati DM 37/08 &middot; Provincia di Varese</div>
+    <div>Consulenza: <a href="tel:+393292354847" class="font-bold hover:underline">329 235 4847</a></div>
+  </motion.div>
+
+  <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 px-4 md:px-6 py-3">
+    <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/img/logo.svg" alt="Energia Solare di Morello Eugenio" class="h-11 w-auto">
+      </a>
+      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#numeri" class="hover:text-amber-400 transition">Numeri</a>
+        <a href="#ingegneria" class="hover:text-amber-400 transition">Sistemi</a>
+        <a href="#fotovoltaico" class="hover:text-amber-400 transition">Fotovoltaico</a>
+        <a href="#eolico" class="hover:text-amber-400 transition">Eolico</a>
+        <a href="#termico" class="hover:text-amber-400 transition">Termico</a>
+        <a href="#portfolio-reale" class="text-amber-400 font-bold hover:underline"><i class="fa-solid fa-images mr-1"></i> Cantieri</a>
+        <a href="progetti.html" class="hover:text-amber-400 transition">Tutti i progetti</a>
+      </div>
+      <motion.div class="flex items-center gap-2">
+        <a href="tel:+393292354847" class="hidden sm:inline-flex bg-white hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded transition items-center gap-2">
+          <i class="fa-solid fa-phone"></i> Chiama
+        </a>
+        <button id="menu-btn" type="button" class="lg:hidden text-white p-2 border border-slate-700 rounded" aria-label="Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </motion.div>
+    </motion.div>
+    <div id="mobile-nav" class="hidden lg:hidden mt-3 pb-2 border-t border-slate-800 pt-3 flex flex-col gap-2 text-sm text-slate-300">
+      <a href="#numeri" class="py-2">Numeri</a>
+      <a href="#ingegneria" class="py-2">Sistemi</a>
+      <a href="#portfolio-reale" class="py-2 text-amber-400">Cantieri</a>
+      <a href="progetti.html" class="py-2">Tutti i progetti</a>
+      <a href="#contatti" class="py-2">Contatti</a>
+      <a href="tel:+393292354847" class="py-2 font-bold text-white">329 235 4847</a>
+    </motion.div>
+  </nav>
+
+  <section class="relative min-h-[85vh] flex items-center px-4 md:px-6 py-16 md:py-20 overflow-hidden border-b border-slate-800">
+    <div class="solar-glow top-10 left-10"></div>
+    <div class="solar-glow bottom-10 right-10"></motion.div>
+    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+      <div class="lg:col-span-7 space-y-6 md:space-y-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 border border-slate-800 rounded text-xs text-slate-400 uppercase tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span> Vedano Olona &middot; Varese
+        </motion.div>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+          Non vendiamo pannelli.<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-200">Progettiamo indipendenza.</span>
+        </h1>
+        <p class="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed">
+          Energia Solare di Morello Eugenio: niente call center. Eugenio analizza il tetto, i consumi e propone fotovoltaico, solare termico ed eolico con preventivo scritto e posa diretta.
+        </p>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
+          <a href="#portfolio-reale" class="text-center bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm uppercase tracking-wider px-6 py-3.5 rounded transition">
+            Vedi cantieri reali
+          </a>
+          <a href="#contatti" class="text-center border border-slate-700 hover:border-slate-500 text-white font-bold text-sm uppercase tracking-wider px-6 py-3.5 rounded transition">
+            Richiedi sopralluogo
+          </a>
+        </motion.div>
+      </motion.div>
+      <div class="lg:col-span-5 blur-card p-6 md:p-8 rounded-xl shadow-2xl">
+        <h3 class="text-lg md:text-xl font-bold text-white mb-5 font-display">Ingegneria energetica locale</h3>
+        <div class="space-y-4 text-sm">
+          <div class="flex items-start gap-4 p-4 bg-slate-950/50 rounded border border-slate-800">
+            <i class="fa-solid fa-location-dot text-amber-500 text-xl mt-0.5"></i>
+            <div>
+              <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-1">Sede</h4>
+              <p class="text-slate-400">Via Torino 4, 21040 Vedano Olona (VA)</p>
+            </motion.div>
+          </motion.div>
+          <div class="flex items-start gap-4 p-4 bg-slate-950/50 rounded border border-slate-800">
+            <i class="fa-solid fa-headset text-amber-500 text-xl mt-0.5"></i>
+            <div>
+              <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-1">Linea diretta</h4>
+              <a href="tel:+393292354847" class="text-slate-100 text-lg font-bold hover:text-amber-400">329 235 4847</a>
+              <p class="text-xs text-slate-500 mt-0.5">Risponde Eugenio per preventivi e urgenze.</p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        <div class="mt-6 pt-5 border-t border-slate-800 text-xs text-slate-500 flex flex-wrap justify-between gap-2">
+          <span>P.IVA 1470745430</span>
+          <span>Varese &middot; Como &middot; Milano nord</span>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="numeri" class="figures border-y border-slate-800 bg-slate-950 py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10 md:mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-500">I nostri numeri</span>
+        <p class="mt-4 text-3xl sm:text-4xl md:text-6xl font-display font-bold text-white leading-none">
+          <span class="text-amber-400 figures__count" data-count="3170000" data-prefix="+" data-format="it" data-ms="3200" data-mega="true">0</span>
+          <span class="text-amber-500/90 text-2xl md:text-4xl"> kWh</span>
+        </p>
+        <p class="text-slate-400 mt-3 text-sm md:text-base">di energia pulita prodotta dai nostri impianti</p>
+      </motion.div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div data-stat-row class="blur-card rounded-lg p-5 md:p-6 text-center ring-1 ring-transparent transition">
+          <p class="text-3xl md:text-4xl font-display font-bold text-white figures__count" data-count="100" data-prefix="+" data-ms="2200">0</span></p>
+          <p class="text-slate-400 text-xs mt-2 uppercase tracking-wide">impianti realizzati</p>
+        </motion.div>
+        <div data-stat-row class="blur-card rounded-lg p-5 md:p-6 text-center ring-1 ring-transparent transition">
+          <p class="text-3xl md:text-4xl font-display font-bold text-white figures__count" data-count="5" data-decimals="1" data-ms="2000">0,0</span></p>
+          <p class="text-slate-400 text-xs mt-2 uppercase tracking-wide">su Google &middot; 7 recensioni</p>
+        </motion.div>
+        <motion.div data-stat-row class="blur-card rounded-lg p-5 md:p-6 text-center ring-1 ring-transparent transition">
+          <p class="text-3xl md:text-4xl font-display font-bold text-white figures__count" data-count="100" data-prefix="+" data-ms="2200">0</span></p>
+          <p class="text-slate-400 text-xs mt-2 uppercase tracking-wide">clienti che ci richiamano</p>
+        </motion.div>
+        <div data-stat-row class="blur-card rounded-lg p-5 md:p-6 text-center ring-1 ring-transparent transition">
+          <p class="text-3xl md:text-4xl font-display font-bold text-white figures__count" data-count="3" data-ms="1800">0</span></p>
+          <p class="text-slate-400 text-xs mt-2 uppercase tracking-wide">tecnologie FV &middot; termico &middot; eolico</p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="ingegneria" class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-24">
+    <div class="text-center max-w-3xl mx-auto mb-14 md:mb-20 space-y-4">
+      <span class="text-xs font-bold uppercase tracking-widest text-amber-500">I nostri sistemi</span>
+      <h2 class="text-2xl md:text-5xl font-bold text-white">Tre tecnologie. Un obiettivo: meno bolletta, più controllo.</h2>
+    </motion.div>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <div id="fotovoltaico" class="p-6 md:p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 transition space-y-5">
+        <div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl">
+          <i class="fa-solid fa-solar-panel"></i>
+        </motion.div>
+        <h3 class="text-xl md:text-2xl font-bold text-white">Fotovoltaico</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Moduli su tetto in coppo, lamiera o copertura piana. Inverter dimensionato, quadro a norma, connessione in rete e collaudo con il distributore.
+        </p>
+      </motion.div>
+      <div id="eolico" class="p-6 md:p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 transition space-y-5">
+        <div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl">
+          <i class="fa-solid fa-wind"></i>
+        </motion.div>
+        <h3 class="text-xl md:text-2xl font-bold text-white">Eolico</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Minieolico solo dove il vento e le distanze hanno senso. Verifica sul posto, pratiche e integrazione con fotovoltaico se serve.
+        </p>
+      </motion.div>
+      <div id="termico" class="p-6 md:p-8 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 transition space-y-5">
+        <div class="w-12 h-12 rounded bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl">
+          <i class="fa-solid fa-temperature-arrow-up"></i>
+        </motion.div>
+        <h3 class="text-xl md:text-2xl font-bold text-white">Solare termico</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Acqua calda e supporto al riscaldamento con collettori piani o sottovuoto. Collegamento a caldaia o pompa di calore già presenti.
+        </p>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="portfolio-reale" class="bg-slate-950 py-20 md:py-24 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="mb-12 md:mb-16 space-y-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-500"><i class="fa-solid fa-camera mr-1"></i> Cantieri reali</span>
+        <h2 class="text-2xl md:text-5xl font-bold text-white font-display">Foto dai nostri tetti</h2>
+        <p class="text-slate-400 max-w-2xl text-sm">
+          Nessun rendering: impianti posati da Morello Eugenio in provincia di Varese. Per la galleria completa apri la pagina progetti.
+        </p>
+        <a href="progetti.html" class="inline-flex text-amber-400 text-sm font-bold hover:underline">Tutti i progetti <i class="fa-solid fa-arrow-right ml-1"></i></a>
+      </motion.div>
+
+      <div class="space-y-16 md:space-y-24">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-6 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+            <img src="assets/img/hero.jpg" alt="Villa con fotovoltaico su più falde" class="w-full h-64 md:h-[400px] object-cover">
+          </motion.div>
+          <div class="lg:col-span-6 space-y-4">
+            <motion.div class="text-xs font-mono text-amber-500 uppercase tracking-wider">Vedano Olona</motion.div>
+            <h3 class="text-xl md:text-3xl font-bold text-white">Fotovoltaico su tetto in coppo</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Impianto residenziale con moduli integrati sulle falde. Sopralluogo per ombre e stato tegole prima del preventivo.
+            </p>
+            <a href="progetti/villa-comignolo.html" class="text-amber-400 text-sm font-bold hover:underline">Scheda progetto</a>
+          </motion.div>
+        </motion.div>
+
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-6 lg:order-2 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+            <img src="assets/img/pensilina-industriale.jpg" alt="Pensilina fotovoltaica" class="w-full h-64 md:h-[400px] object-cover">
+          </motion.div>
+          <div class="lg:col-span-6 lg:order-1 space-y-4">
+            <div class="text-xs font-mono text-amber-500 uppercase tracking-wider">Commerciale</div>
+            <h3 class="text-xl md:text-3xl font-bold text-white">Pensilina fotovoltaica</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Copertura per automezzi con produzione elettrica. Struttura e cablaggio a norma per uso intensivo.
+            </p>
+            <a href="progetti/pensilina-industriale.html" class="text-amber-400 text-sm font-bold hover:underline">Scheda progetto</a>
+          </motion.div>
+        </motion.div>
+
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-6 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+            <img src="assets/img/copertura-piana-misto.jpg" alt="FV e solare termico" class="w-full h-64 md:h-[400px] object-cover">
+          </motion.div>
+          <div class="lg:col-span-6 space-y-4">
+            <div class="text-xs font-mono text-amber-500 uppercase tracking-wider">FV + termico</div>
+            <h3 class="text-xl md:text-3xl font-bold text-white">Copertura piana mista</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Fotovoltaico e solare termico sullo stesso capannone. Un referente per entrambe le tecnologie.
+            </p>
+            <a href="progetti/copertura-piana.html" class="text-amber-400 text-sm font-bold hover:underline">Scheda progetto</a>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </section>
+
+  <section id="contatti" class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-24 border-t border-slate-800">
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-500">Contatti</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-white font-display">Richiedi un sopralluogo</h2>
+        <p class="text-slate-400 text-sm">In provincia di Varese il sopralluogo non ha costi di uscita. Portate bollette recenti se le avete.</p>
+        <ul class="space-y-3 text-sm text-slate-300 pt-4">
+          <li><i class="fa-solid fa-phone text-amber-500 w-5"></i> <a href="tel:+393292354847" class="hover:text-amber-400">329 235 4847</a></li>
+          <li><i class="fa-brands fa-whatsapp text-amber-500 w-5"></i> <a href="https://wa.me/393292354847" class="hover:text-amber-400" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><i class="fa-solid fa-location-dot text-amber-500 w-5"></i> Via Torino 4, Vedano Olona (VA)</li>
+        </ul>
+      </motion.div>
+      <form id="contact-form" class="blur-card rounded-xl p-6 md:p-8 space-y-4" action="https://formsubmit.co/info@energiasolaremorello.it" method="POST">
+        <input type="hidden" name="_subject" value="Richiesta dal sito web">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Nome</label>
+          <input type="text" name="nome" required class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2.5 text-white text-sm focus:border-amber-500 outline-none">
+        </motion.div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Telefono</label>
+          <input type="tel" name="telefono" required class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2.5 text-white text-sm focus:border-amber-500 outline-none">
+        </motion.div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Messaggio</label>
+          <textarea name="messaggio" rows="4" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2.5 text-white text-sm focus:border-amber-500 outline-none" placeholder="Indirizzo, tipo di tetto, consumi..."></textarea>
+        </motion.div>
+        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm uppercase tracking-wider py-3.5 rounded transition">Invia richiesta</button>
+        <p id="form-msg" class="text-sm text-slate-500" role="status"></p>
+      </form>
+    </motion.div>
+  </section>
+
+  <footer class="bg-slate-950 border-t border-slate-900 py-12 md:py-16 px-4 md:px-6 text-sm text-slate-500">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+      <div class="space-y-3">
+        <img src="assets/img/logo.svg" alt="" class="h-14 w-auto brightness-110">
+        <p class="text-xs leading-relaxed max-w-xs text-slate-400">
+          Energia Solare di Morello Eugenio. Installazione diretta a Vedano Olona e provincia di Varese.
+        </p>
+      </motion.div>
+      <div class="space-y-3">
+        <div class="text-white font-bold font-display uppercase tracking-wider text-sm">Contatti</motion.div>
+        <ul class="space-y-2 text-xs text-slate-400">
+          <li><i class="fa-solid fa-phone text-amber-500 mr-2"></i> 329 235 4847</li>
+          <li><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i> Via Torino 4, Vedano Olona (VA)</li>
+        </ul>
+      </motion.div>
+      <div class="space-y-3 text-xs">
+        <div class="text-white font-bold font-display uppercase tracking-wider text-sm">Normative</div>
+        <p class="text-slate-500">Impianti secondo CEI 0-21 e normativa di connessione. Abilitazione DM 37/08.</p>
+      </motion.div>
+    </motion.div>
+    <div class="max-w-7xl mx-auto border-t border-slate-900 mt-10 pt-6 text-center text-xs text-slate-600">
+      &copy; 2026 Energia Solare di Morello Eugenio &middot; P.IVA 1470745430
+    </motion.div>
+  </footer>
+
+  <a href="https://wa.me/393292354847" class="fixed bottom-5 right-5 z-40 bg-green-600 hover:bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg text-2xl" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/stats.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('form-msg');
+    if (form && msg) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.textContent = 'Invio in corso...';
+        try {
+          const r = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          msg.textContent = r.ok ? 'Messaggio inviato. Vi richiameremo presto.' : 'Errore invio. Chiamate al 329 235 4847.';
+          if (r.ok) form.reset();
+        } catch {
+          msg.textContent = 'Errore di rete. Chiamate al 329 235 4847.';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
