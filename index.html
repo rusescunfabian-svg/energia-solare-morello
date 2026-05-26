@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Energia Solare | Portfolio Professionale di Ingegneria Energetica</title>
+  <meta name="description" content="Portfolio di progetti realizzati con eccellenza. Ingegneria di precisione e installazioni su misura per soluzioni energetiche di qualità.">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;700&display=swap');
+    :root {
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); }
+    h1, h2, h3, .font-display { font-family: var(--font-display); }
+    .blur-card {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: 0 8px 32px rgba(15,23,42,.06);
+    }
+    .blur-card-gold { border-color: rgba(245,158,11,.35); }
+    .logo-plate {
+      background: #ffffff;
+      border: 3px solid #f59e0b;
+      box-shadow: 0 8px 32px rgba(15,23,42,.18), 0 0 0 4px rgba(255,255,255,.95);
+    }
+    .logo-plate--nav {
+      padding: 0.35rem 0.5rem;
+      border-radius: 0.65rem;
+    }
+    .logo-plate--hero {
+      padding: 1rem 1.25rem;
+      border-radius: 1.25rem;
+      box-shadow: 0 16px 48px rgba(15,23,42,.22), 0 0 0 6px rgba(255,255,255,.98);
+    }
+    .logo-plate--hero img {
+      height: 9rem;
+      width: auto;
+      max-width: min(100%, 280px);
+    }
+    @media (min-width: 640px) {
+      .logo-plate--hero img { height: 11rem; }
+    }
+    .home-screen { min-height: 100dvh; min-height: 100svh; }
+    .stats-screen { min-height: 100dvh; min-height: 100svh; scroll-margin-top: 4rem; }
+    .home-bg {
+      background-image: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(244,247,251,.78) 50%, rgba(244,247,251,.88) 100%),
+        url('assets/img/hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .btn-call, .btn-wa, .btn-scroll {
+      display: flex; align-items: center; justify-content: center; gap: .75rem;
+      width: 100%; padding: 1rem 1.25rem; border-radius: .75rem; font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-call:active, .btn-wa:active, .btn-scroll:active { transform: scale(.98); }
+    @media (max-width: 640px) {
+      .btn-call, .btn-wa, .btn-scroll {
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+        min-height: 56px;
+        touch-action: manipulation;
+      }
+      .blur-card {
+        padding: 1rem;
+      }
+      .stat-mega {
+        padding: 1.5rem 1rem;
+      }
+      .logo-plate--hero {
+        padding: 0.75rem 1rem;
+      }
+      .logo-plate--hero img {
+        height: 7rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+      .home-screen {
+        min-height: auto;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .stats-screen {
+        min-height: auto;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .mobile-tap-target {
+        min-height: 44px;
+        min-width: 44px;
+      }
+    }
+    @media (max-width: 768px) {
+      .home-screen {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .stats-screen {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+      .flex-col-lg {
+        flex-direction: column;
+      }
+    }
+    @media (min-width: 641px) and (max-width: 1024px) {
+      h1 {
+        font-size: 3.5rem;
+      }
+      .home-screen {
+        min-height: 80vh;
+      }
+    }
+    .touch-friendly {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .touch-friendly:active {
+      opacity: 0.9;
+    }
+    .touch-button {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(245, 158, 11, 0.3);
+      tap-highlight-color: rgba(245, 158, 11, 0.3);
+      cursor: pointer;
+    }
+    .touch-button:active {
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+    .touch-input {
+      font-size: 16px;
+      min-height: 44px;
+      padding: 12px 16px;
+    }
+    @media (max-width: 640px) {
+      .touch-button {
+        min-height: 48px;
+        min-width: 48px;
+      }
+      input, textarea, select {
+        font-size: 16px;
+      }
+    }
+    .mobile-text-optimized {
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+    .mobile-heading {
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .mobile-paragraph {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .mobile-button {
+      font-size: 16px;
+      padding: 14px 20px;
+      min-height: 48px;
+    }
+    @media (max-width: 640px) {
+      .mobile-text-optimized {
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .mobile-heading {
+        font-size: 32px;
+        line-height: 1.1;
+      }
+      .mobile-paragraph {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+      .mobile-button {
+        font-size: 17px;
+        padding: 16px 24px;
+        min-height: 56px;
+      }
+      p, li, span {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1, h2, h3, h4 {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+    }
+    .stat-mega {
+      padding: 2rem 1rem;
+      border-radius: 1rem;
+      background: linear-gradient(180deg, rgba(255,251,235,.9), #fff);
+      border: 1px solid rgba(245,158,11,.25);
+    }
+    .figures.is-live [data-stat-row] { animation: fadeUp .6s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    [data-stat-row] { opacity: 0; }
+    .figures.is-live [data-stat-row] { opacity: 1; }
+    html { scroll-behavior: smooth; }
+    
+    /* FAQ Accordion Styles */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+    }
+    .faq-answer.open .faq-answer-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .faq-answer .faq-answer-content {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-question {
+      min-height: 60px;
+      touch-action: manipulation;
+    }
+    @media (max-width: 640px) {
+      .faq-question {
+        min-height: 68px;
+        padding: 1rem 1.25rem !important;
+      }
+      .faq-answer.open {
+        max-height: 800px;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-200 selection:text-slate-900 overflow-x-hidden">
+
+  <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white font-medium text-xs tracking-widest uppercase py-2.5 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-1">
+    <div><i class="fa-solid fa-certificate mr-1.5"></i> Impianti certificati DM 37/08 · Provincia di Varese</div>
+    <div>Consulenza professionale: <a href="tel:+393292354847" class="font-bold hover:text-amber-400">329 235 4847</a></div>
+  </div>
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 px-4 md:px-6 py-3 shadow-sm">
+    <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+      <a href="index.html" class="shrink-0">
+        <img src="assets/img/logo.svg" alt="Energia Solare di Morello Eugenio" class="h-12 sm:h-14 w-auto logo-plate logo-plate--nav">
+      </a>
+      <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="#home" class="hover:text-amber-600 transition">Home</a>
+        <a href="#numeri" class="hover:text-amber-600 transition">Numeri</a>
+        <a href="#ingegneria" class="hover:text-amber-600 transition">Sistemi</a>
+        <a href="#portfolio-reale" class="text-amber-600 font-bold">Portfolio</a>
+        <a href="#contatti" class="hover:text-amber-600 transition">Contatti</a>
+        <a href="progetti.html" class="hover:text-amber-600 transition">Progetti</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="#contatti" class="hidden sm:inline-flex bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg">
+          <i class="fa-solid fa-handshake mr-1"></i> Contatti
+        </a>
+        <button id="menu-btn" type="button" class="lg:hidden text-slate-800 p-3 border border-slate-300 rounded-lg hover:bg-slate-50 transition active:scale-95" aria-label="Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden lg:hidden mt-3 pb-4 border-t border-slate-200 pt-4 flex flex-col gap-3 text-base text-slate-600">
+      <a href="#home" class="py-3 px-4 hover:bg-slate-50 rounded-lg transition">Home</a>
+      <a href="#numeri" class="py-3 px-4 hover:bg-slate-50 rounded-lg transition">Numeri</a>
+      <a href="#ingegneria" class="py-3 px-4 hover:bg-slate-50 rounded-lg transition">Sistemi</a>
+      <a href="#portfolio-reale" class="py-3 px-4 bg-amber-50 text-amber-600 font-bold rounded-lg">Portfolio</a>
+      <a href="#contatti" class="py-3 px-4 hover:bg-slate-50 rounded-lg transition">Contatti</a>
+      <a href="progetti.html" class="py-3 px-4 hover:bg-slate-50 rounded-lg transition">Progetti</a>
+      <a href="tel:+393292354847" class="py-3 px-4 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 transition">329 235 4847</a>
+    </div>
+  </nav>
+
+  <section id="home" class="home-screen relative flex flex-col px-4 md:px-6 py-12 md:py-20 border-b border-slate-200 overflow-hidden touch-friendly">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-amber-50/30"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-200/10 to-transparent rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-amber-300/5 to-transparent rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-amber-500/3 via-transparent to-slate-900/5 rounded-full blur-3xl"></div>
+    
+    <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col relative z-10">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20">
+        <div class="lg:w-1/2 space-y-6 md:space-y-10 text-center lg:text-left">
+          <div class="inline-flex items-center gap-3 px-5 py-3 bg-white/90 backdrop-blur-lg border border-amber-200/60 rounded-full text-sm font-medium text-amber-700 uppercase tracking-wider shadow-lg">
+            <span class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span> Vedano Olona · Varese · Italia
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 font-display leading-tight mobile-heading">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-amber-600">
+              Energia Solare
+            </span><br>
+            <span class="text-slate-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Trasparenza, Esperienza</span><br>
+            <span class="text-amber-600 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">e Valore nel Tempo</span>
+          </h1>
+          
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-transparent blur-xl rounded-3xl"></div>
+            <p class="text-slate-600 text-lg md:text-xl max-w-2xl leading-relaxed relative z-10 mobile-paragraph mobile-text-optimized">
+              <span class="font-bold text-slate-900">La nostra filosofia:</span> Offriamo valutazioni tecniche accurate e soluzioni personalizzate, fondate su ingegneria di precisione e installazioni su misura, per garantire un futuro energetico sostenibile e di valore duraturo.
+            </p>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="#portfolio-reale" class="px-8 py-5 bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all duration-300 shadow-2xl hover:shadow-3xl hover:-translate-y-1 mobile-tap-target touch-button mobile-button">
+              <i class="fa-solid fa-images mr-3"></i>Scopri i nostri progetti
+            </a>
+            <a href="#contatti" class="px-8 py-5 bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm uppercase tracking-wider rounded-xl transition-all duration-300 border-2 border-slate-300 hover:border-amber-500 shadow-lg hover:shadow-xl hover:-translate-y-1 mobile-tap-target touch-button mobile-button">
+              <i class="fa-solid fa-handshake mr-3"></i>La nostra professionalità
+            </a>
+          </div>
+          
+          <div class="pt-6 flex flex-wrap gap-4 justify-center lg:justify-start">
+            <div class="flex items-center gap-2 text-slate-600 text-sm">
+              <i class="fa-solid fa-check-circle text-amber-500"></i>
+              <span>Certificazioni DM 37/08</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 text-sm">
+              <i class="fa-solid fa-check-circle text-amber-500"></i>
+              <span>Progettazione personalizzata</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-600 text-sm">
+              <i class="fa-solid fa-check-circle text-amber-500"></i>
+              <span>Installazioni su misura</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:w-1/2 relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-3xl border-4 border-white/50">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-500/20 via-transparent to-slate-900/30 z-10"></div>
+            <img src="assets/img/hero.jpg" alt="Energia Solare - Progetti di eccellenza" class="w-full h-72 md:h-96 lg:h-[500px] object-cover scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent z-20"></div>
+            <div class="absolute bottom-8 left-8 right-8 z-30">
+              <div class="bg-white/95 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-white/80">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center">
+                    <i class="fa-solid fa-solar-panel text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-xl">Ingegneria Energetica di Precisione</h3>
+                    <p class="text-slate-500 text-sm">Soluzioni integrate per un futuro sostenibile</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="text-center p-3 bg-amber-50/50 rounded-lg">
+                    <p class="text-2xl font-bold text-slate-900">100+</p>
+                    <p class="text-xs text-slate-600">Impianti realizzati</p>
+                  </div>
+                  <div class="text-center p-3 bg-slate-50/50 rounded-lg">
+                    <p class="text-2xl font-bold text-slate-900">5.0</p>
+                    <p class="text-xs text-slate-600">Valutazione Google</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-500/25 to-transparent rounded-full blur-2xl"></div>
+          <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-tr from-slate-900/15 to-transparent rounded-full blur-2xl"></div>
+          
+          <div class="mt-8 flex justify-center lg:justify-start">
+            <div class="inline-flex items-center gap-6 bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-200/60">
+              <div class="text-center">
+                <p class="text-3xl font-bold text-amber-600">15+</p>
+                <p class="text-xs text-slate-600">Anni esperienza</p>
+              </div>
+              <div class="h-8 w-px bg-slate-300"></div>
+              <div class="text-center">
+                <p class="text-3xl font-bold text-slate-900">1800+</p>
+                <p class="text-xs text-slate-600">Tonnellate CO₂ evitate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-20 lg:mt-32 text-center">
+        <div class="inline-flex flex-col items-center gap-6">
+          <p class="text-slate-500 text-sm font-medium tracking-wider">SCORRI PER SCOPRIRE LA NOSTRA FILOSOFIA E I PROGETTI REALIZZATI</p>
+          <a href="#numeri" class="w-14 h-14 flex items-center justify-center bg-white border-2 border-slate-300 rounded-full hover:border-amber-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group mobile-tap-target touch-button">
+            <i class="fa-solid fa-chevron-down text-slate-600 group-hover:text-amber-600 transition text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="numeri" class="figures stats-screen bg-white border-y border-slate-200 py-16 md:py-20 flex flex-col justify-center">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10 md:mb-14">
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-slate-900">La nostra traiettoria di eccellenza</h2>
+        <p class="text-slate-500 mt-3 text-sm max-w-2xl mx-auto">Numeri che testimoniano l'impatto positivo dei nostri progetti e la qualità del nostro approccio professionale.</p>
+      </div>
+      <div class="stat-mega max-w-4xl mx-auto text-center mb-10 md:mb-14">
+        <p class="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-slate-900 leading-none">
+          <span class="text-amber-600 figures__count" data-count="1800" data-prefix="+" data-format="it" data-ms="4500" data-mega="true">0</span>
+          <span class="text-amber-500 text-2xl md:text-4xl font-normal"> tonnellate</span>
+        </p>
+        <p class="text-slate-500 mt-3 text-sm md:text-base">di CO₂ evitate grazie ai nostri impianti</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+        <div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="100" data-prefix="+" data-ms="2800">0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">impianti</p>
+        </div>
+        <div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="5" data-decimals="1" data-ms="2600">0,0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">Google · 7 rec.</p>
+        </div>
+        <div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="100" data-prefix="+" data-ms="2800">0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">clienti</p>
+        </div>
+        <div data-stat-row class="blur-card blur-card-gold rounded-xl p-5 md:p-6 text-center">
+          <p class="text-3xl md:text-4xl font-display font-bold text-slate-900"><span class="figures__count" data-count="3" data-ms="2400">0</span></p>
+          <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">tecnologie</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chi-siamo" class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 bg-[var(--bg)]">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div class="space-y-4">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">La nostra filosofia</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900">Ingegneria di precisione e installazioni su misura</h2>
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed">Da Vedano Olona, portiamo competenza e trasparenza in ogni progetto. La nostra priorità è offrire soluzioni energetiche che durano nel tempo, con un approccio basato sulla qualità e sul valore reale.</p>
+      </div>
+      <div class="blur-card rounded-2xl p-6 space-y-3 text-sm text-slate-600">
+        <p><strong class="text-slate-900">1.</strong> Analisi tecnica approfondita</p>
+        <p><strong class="text-slate-900">2.</strong> Progettazione personalizzata</p>
+        <p><strong class="text-slate-900">3.</strong> Installazione di precisione</p>
+        <p><strong class="text-slate-900">4.</strong> Assistenza continua nel tempo</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ingegneria" class="bg-white border-y border-slate-200 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Le nostre competenze</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900">Tecnologie integrate per soluzioni complete</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article id="fotovoltaico" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-solar-panel text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Fotovoltaico</h3>
+          <p class="text-slate-600 text-sm">Soluzioni integrate per ogni tipo di copertura, con componenti di alta qualità e certificazioni complete.</p>
+        </article>
+        <article id="eolico" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-wind text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Eolico</h3>
+          <p class="text-slate-600 text-sm">Sistemi minieolici progettati per massimizzare l'efficienza energetica in contesti appropriati.</p>
+        </article>
+        <article id="termico" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-temperature-arrow-up text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Solare termico</h3>
+          <p class="text-slate-600 text-sm">Tecnologie avanzate per la produzione di acqua calda sanitaria e integrazione con impianti esistenti.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio-reale" class="py-16 md:py-24 bg-[var(--bg)]">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-12">
+      <div class="space-y-3">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Il nostro portfolio</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900 font-display">Progetti realizzati con precisione e cura</h2>
+        <p class="text-slate-600 text-sm">Esplora la galleria dei nostri lavori più significativi, realizzati con attenzione ai dettagli e alla qualità costruttiva.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="progetti/villa-comignolo.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="assets/img/hero.jpg" alt="Villa fotovoltaico" class="h-56 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <div class="p-4">
+            <p class="text-sm font-bold text-slate-800">Villa residenziale con tetto in coppo</p>
+            <p class="text-xs text-slate-500 mt-1">Installazione integrata con massima cura estetica</p>
+          </div>
+        </a>
+        <a href="progetti/pensilina-industriale.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="assets/img/pensilina-industriale.jpg" alt="Pensilina" class="h-56 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <div class="p-4">
+            <p class="text-sm font-bold text-slate-800">Pensilina industriale con integrazione fotovoltaica</p>
+            <p class="text-xs text-slate-500 mt-1">Soluzione energetica per strutture commerciali</p>
+          </div>
+        </a>
+        <a href="progetti/copertura-piana.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="assets/img/copertura-piana-misto.jpg" alt="Copertura piana" class="h-56 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <div class="p-4">
+            <p class="text-sm font-bold text-slate-800">Sistema combinato fotovoltaico e termico</p>
+            <p class="text-xs text-slate-500 mt-1">Tecnologie integrate per efficienza massima</p>
+          </div>
+        </a>
+        <a href="progetti/grande-impianto.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="assets/img/grande-impianto.jpg" alt="Grande impianto" class="h-56 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <div class="p-4">
+            <p class="text-sm font-bold text-slate-800">Impianto fotovoltaico di grandi dimensioni</p>
+            <p class="text-xs text-slate-500 mt-1">Progettazione su scala industriale</p>
+          </div>
+        </a>
+        <a href="progetti/cantiere-residenziale.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="assets/img/cantiere-tecnico.jpg" alt="Cantiere tecnico" class="h-56 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <div class="p-4">
+            <p class="text-sm font-bold text-slate-800">Cantiere residenziale con posa in quota</p>
+            <p class="text-xs text-slate-500 mt-1">Lavori tecnici con attenzione alla sicurezza</p>
+          </div>
+        </a>
+        <a href="progetti/villa-18-moduli.html" class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="assets/img/villa-18-moduli.jpg" alt="Villa 18 moduli" class="h-56 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <div class="p-4">
+            <p class="text-sm font-bold text-slate-800">Villa con sistema da 18 moduli</p>
+            <p class="text-xs text-slate-500 mt-1">Soluzione energetica per abitazioni di pregio</p>
+          </div>
+        </a>
+      </div>
+      <div class="text-center pt-8">
+        <a href="progetti.html" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold uppercase tracking-wider px-6 py-3 rounded-lg transition">
+          <i class="fa-solid fa-gallery-thumbnails"></i>
+          <span>Esplora la galleria completa</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti" class="bg-[var(--bg)] py-16 md:py-24 border-t border-slate-200 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="space-y-4 mb-10">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Contatti professionali</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-slate-900 font-display">Collaborazione basata sulla trasparenza</h2>
+        <p class="text-slate-600 text-sm">Per consulenze tecniche approfondite o valutazioni progettuali, siamo disponibili per un confronto professionale.</p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-10">
+        <div class="space-y-6">
+          <div class="blur-card rounded-2xl p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-4">Informazioni di contatto</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-phone text-amber-500 mt-1"></i>
+                <div>
+                  <p class="font-medium text-slate-900">Telefono</p>
+                  <a href="tel:+393292354847" class="text-slate-600 hover:text-amber-600">329 235 4847</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-envelope text-amber-500 mt-1"></i>
+                <div>
+                  <p class="font-medium text-slate-900">Email</p>
+                  <a href="mailto:info@energiasolaremorello.it" class="text-slate-600 hover:text-amber-600">info@energiasolaremorello.it</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-location-dot text-amber-500 mt-1"></i>
+                <div>
+                  <p class="font-medium text-slate-900">Sede</p>
+                  <p class="text-slate-600">Via Torino 4, Vedano Olona (VA)</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="blur-card rounded-2xl p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-4">La nostra sede</h3>
+            <div class="rounded-lg overflow-hidden border border-slate-200">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.0863446706667!2d8.8840445!3d45.7694598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478687b67ced294b%3A0xfd7ef7b425c68e81!2sEnergia%20Solare%20di%20Morello%20Eugenio!5e0!3m2!1sit!2sit!4v1779787997135!5m2!1sit!2sit" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+        <form id="contact-form" class="blur-card blur-card-gold rounded-2xl p-6 md:p-8 space-y-4" action="https://formsubmit.co/info@energiasolaremorello.it" method="POST">
+          <input type="hidden" name="_subject" value="Richiesta di consulenza professionale dal sito">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Nome e cognome</label>
+            <input type="text" name="nome" required class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white touch-input" placeholder="Nome completo">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Email professionale</label>
+            <input type="email" name="email" required class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white touch-input" placeholder="email@azienda.it">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Telefono</label>
+            <input type="tel" name="telefono" class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white touch-input" placeholder="Opzionale">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Messaggio</label>
+            <textarea name="messaggio" rows="4" class="w-full border border-slate-200 rounded-lg px-3 py-3 text-slate-900 focus:border-amber-500 outline-none bg-white touch-input" placeholder="Descrivi il tuo progetto o la tua richiesta di consulenza..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold uppercase tracking-wider py-4 rounded-lg touch-button mobile-button">Invia richiesta di consulenza</button>
+          <p id="form-msg" class="text-sm text-slate-500 text-center" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="bg-white border-t border-slate-200 py-14 px-4 md:px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Domande frequenti</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Risposte chiare per scelte consapevoli</h2>
+        <p class="text-slate-600 text-sm md:text-base max-w-2xl mx-auto mt-4">Le informazioni più richieste dai nostri clienti, raccolte per aiutarti a comprendere meglio il mondo dell'energia solare.</p>
+      </div>
+      
+      <div class="faq-accordion space-y-3">
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">Qual è il tempo di ritorno dell'investimento per un impianto fotovoltaico?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Il tempo di ritorno dell'investimento (ROI) dipende da diversi fattori: dimensione dell'impianto, consumi energetici, esposizione solare e incentivi disponibili. In media, per un impianto residenziale di 3-6 kW, il ROI si attesta tra i 5 e gli 8 anni. Considerando che un impianto fotovoltaico ha una vita utile di 25-30 anni, si tratta di un investimento vantaggioso nel lungo periodo.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">È necessario sostituire completamente il tetto prima dell'installazione?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Non sempre. Durante la valutazione preliminare, analizziamo lo stato del tetto e la sua capacità di supportare l'impianto per 25-30 anni. Se il tetto è in buone condizioni e ha ancora diversi anni di vita utile, l'installazione può procedere senza sostituzioni. In caso di dubbi sulla tenuta strutturale, consigliamo interventi mirati o la sostituzione delle parti critiche.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">Come funziona lo scambio sul posto dell'energia prodotta in eccesso?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Lo scambio sul posto (SSP) è un meccanismo che permette di immettere nella rete elettrica nazionale l'energia prodotta in eccesso durante il giorno e prelevarla quando serve (sera e notte). GSE (Gestore Servizi Energetici) riconosce un contributo economico per l'energia immessa, che viene utilizzato per compensare i costi dell'energia prelevata. Il sistema è completamente automatizzato e non richiede interventi manuali.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">Quali manutenzioni sono necessarie per un impianto fotovoltaico?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">La manutenzione di un impianto fotovoltaico è minima ma importante: pulizia periodica dei pannelli (1-2 volte l'anno), controllo visivo dello stato dei moduli e dei cavi, verifica delle prestazioni attraverso il monitoraggio. Gli inverter hanno una durata di circa 10-15 anni e potrebbero richiedere sostituzione. Consigliamo un controllo professionale annuale per garantire massima efficienza e sicurezza.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">È possibile integrare un sistema di accumulo (batterie) in un impianto esistente?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Sì, nella maggior parte dei casi è possibile integrare un sistema di accumulo in un impianto fotovoltaico esistente. La fattibilità dipende dalla compatibilità dell'inverter e dallo spazio disponibile. I sistemi di accumulo moderni permettono di aumentare l'autoconsumo fino al 70-80%, riducendo ulteriormente la dipendenza dalla rete. Valutiamo caso per caso per garantire la migliore soluzione tecnica ed economica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="google-business" class="bg-white border-t border-slate-200 py-14 px-4 md:px-6">
+    <div class="max-w-3xl mx-auto text-center space-y-5">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">La nostra reputazione</span>
+      <h2 class="text-xl md:text-2xl font-bold text-slate-900">Eccellenza riconosciuta · 5,0 su Google</h2>
+      <p class="text-slate-600 text-sm max-w-xl mx-auto">La qualità del nostro lavoro è testimoniata dalle recensioni dei clienti che hanno scelto la nostra professionalità.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
+        <a href="https://maps.app.goo.gl/Y9ZrvgNGNyKHyPwL8" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition"><i class="fa-brands fa-google mr-1"></i> Profilo Google Business</a>
+        <a href="https://maps.app.goo.gl/Y9ZrvgNGNyKHyPwL8" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg border border-slate-300 text-slate-700 font-bold text-sm hover:border-amber-400 hover:text-amber-600 transition">Leggi le testimonianze</a>
+        <a href="https://maps.app.goo.gl/Y9ZrvgNGNyKHyPwL8" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition">Condividi la tua esperienza</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200 py-10 px-4 text-center text-xs text-slate-500 bg-[var(--bg)]">
+    <img src="assets/img/logo.svg" alt="Energia Solare" class="h-12 mx-auto mb-3">
+    <p>© 2026 Energia Solare · P.IVA 1470745430 · Via Torino 4, Vedano Olona (VA)</p>
+  </footer>
+
+  <script src="assets/js/stats.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('form-msg');
+    if (form && msg) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.textContent = 'Invio in corso...';
+        try {
+          const r = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          msg.textContent = r.ok ? 'Richiesta inviata. Ti risponderemo al più presto.' : 'Si è verificato un errore. Riprova più tardi.';
+          if (r.ok) form.reset();
+        } catch { msg.textContent = 'Errore di connessione. Riprova più tardi.'; }
+      });
+    }
+    if (window.location.hash === '#contatti') {
+      setTimeout(() => document.getElementById('contatti')?.scrollIntoView({ behavior: 'smooth' }), 300);
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.touch-button');
+      buttons.forEach(button => {
+        button.addEventListener('touchstart', () => {
+          button.classList.add('active');
+        });
+        button.addEventListener('touchend', () => {
+          button.classList.remove('active');
+        });
+      });
+      
+      console.log('Touch optimization loaded:', buttons.length, 'touch-friendly buttons');
+      
+      // FAQ Accordion functionality
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.closest('.faq-item');
+          const answer = faqItem.querySelector('.faq-answer');
+          const icon = question.querySelector('.faq-icon');
+          
+          // Close all other FAQ items
+          document.querySelectorAll('.faq-item.open').forEach(openItem => {
+            if (openItem !== faqItem) {
+              openItem.classList.remove('open');
+              openItem.querySelector('.faq-answer').classList.remove('open');
+            }
+          });
+          
+          // Toggle current FAQ item
+          faqItem.classList.toggle('open');
+          answer.classList.toggle('open');
+          
+          // Update aria-expanded attribute for accessibility
+          const isExpanded = faqItem.classList.contains('open');
+          question.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Set initial aria-expanded attribute
+        question.setAttribute('aria-expanded', 'false');
+      });
+      
+      console.log('FAQ accordion loaded:', faqQuestions.length, 'FAQ items');
+    });
+  </script>
+</body>
+</html>

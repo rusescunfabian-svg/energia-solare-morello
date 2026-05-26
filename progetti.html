@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Professionale | Energia Solare - Progetti Realizzati</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@400;700&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b111e; color: #f8fafc; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .blur-card { background: rgba(17,24,39,0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 px-4 py-3">
+    <motion.div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html"><img src="assets/img/logo.svg" alt="" class="h-10"></a>
+      <a href="index.html" class="text-sm text-amber-400 hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> Home</a>
+    </motion.div>
+  </nav>
+
+  <header class="max-w-7xl mx-auto px-4 py-16">
+    <p class="text-xs uppercase tracking-widest text-amber-500 font-bold">Portfolio professionale</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-white font-display mt-2">Progetti realizzati con eccellenza</h1>
+    <p class="text-slate-400 mt-4 max-w-2xl text-sm">Una selezione dei nostri lavori più significativi, realizzati con attenzione ai dettagli e alla qualità costruttiva.</p>
+  </header>
+
+  <motion.div class="max-w-7xl mx-auto px-4 pb-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a href="progetti/villa-comignolo.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition hover:shadow-xl">
+      <img src="assets/img/hero.jpg" alt="Villa residenziale con tetto in coppo" class="w-full h-56 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Villa residenziale con tetto in coppo</h2><p class="text-slate-400 text-xs mt-1">Installazione integrata con massima cura estetica</p></div>
+    </a>
+    <a href="progetti/pensilina-industriale.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition hover:shadow-xl">
+      <img src="assets/img/pensilina-industriale.jpg" alt="Pensilina industriale" class="w-full h-56 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Pensilina industriale con integrazione fotovoltaica</h2><p class="text-slate-400 text-xs mt-1">Soluzione energetica per strutture commerciali</p></div>
+    </a>
+    <a href="progetti/copertura-piana.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition hover:shadow-xl">
+      <img src="assets/img/copertura-piana-misto.jpg" alt="Sistema combinato" class="w-full h-56 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Sistema combinato fotovoltaico e termico</h2><p class="text-slate-400 text-xs mt-1">Tecnologie integrate per efficienza massima</p></div>
+    </a>
+    <a href="progetti/cantiere-residenziale.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition hover:shadow-xl">
+      <img src="assets/img/cantiere-tecnico.jpg" alt="Cantiere residenziale" class="w-full h-56 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Cantiere residenziale con posa in quota</h2><p class="text-slate-400 text-xs mt-1">Lavori tecnici con attenzione alla sicurezza</p></div>
+    </a>
+    <a href="progetti/grande-impianto.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition hover:shadow-xl">
+      <img src="assets/img/grande-impianto.jpg" alt="Grande impianto" class="w-full h-56 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Impianto fotovoltaico di grandi dimensioni</h2><p class="text-slate-400 text-xs mt-1">Progettazione su scala industriale</p></div>
+    </a>
+    <a href="progetti/villa-18-moduli.html" class="blur-card rounded-xl overflow-hidden hover:border-amber-500/30 border border-transparent transition hover:shadow-xl">
+      <img src="assets/img/villa-18-moduli.jpg" alt="Villa 18 moduli" class="w-full h-56 object-cover">
+      <div class="p-4"><h2 class="font-bold text-white">Villa con sistema da 18 moduli</h2><p class="text-slate-400 text-xs mt-1">Soluzione energetica per abitazioni di pregio</p></div>
+    </a>
+  </motion.div>
+
+  <footer class="border-t border-slate-900 py-8 text-center text-xs text-slate-600">
+    <a href="tel:+393292354847" class="text-amber-400">329 235 4847</a> · Energia Solare
+  </footer>
+</body>
+</html>
