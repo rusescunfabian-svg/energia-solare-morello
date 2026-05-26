@@ -214,6 +214,41 @@
     [data-stat-row] { opacity: 0; }
     .figures.is-live [data-stat-row] { opacity: 1; }
     html { scroll-behavior: smooth; }
+    
+    /* FAQ Accordion Styles */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+    }
+    .faq-answer.open .faq-answer-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .faq-answer .faq-answer-content {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-question {
+      min-height: 60px;
+      touch-action: manipulation;
+    }
+    @media (max-width: 640px) {
+      .faq-question {
+        min-height: 68px;
+        padding: 1rem 1.25rem !important;
+      }
+      .faq-answer.open {
+        max-height: 800px;
+      }
+    }
   </style>
 </head>
 <body class="selection:bg-amber-200 selection:text-slate-900 overflow-x-hidden">
@@ -226,7 +261,7 @@
   <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 px-4 md:px-6 py-3 shadow-sm">
     <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
       <a href="index.html" class="shrink-0">
-        <img src="assets/img/logo.svg" alt="Energia Solare di Morello Eugenio" class="h-12 sm:h-14 w-auto logo-plate logo-plate--nav">
+        <img src="assets/img/logo.svg" alt="Energia Solare di Morello Eugenio" class="h-12 sm:h-14 w-auto logo-plate--nav">
       </a>
       <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
         <a href="#home" class="hover:text-amber-600 transition">Home</a>
@@ -280,7 +315,7 @@
           <div class="relative">
             <div class="absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-transparent blur-xl rounded-3xl"></div>
             <p class="text-slate-600 text-lg md:text-xl max-w-2xl leading-relaxed relative z-10 mobile-paragraph mobile-text-optimized">
-              <span class="font-bold text-slate-900">La nostra filosofia:</span> Non cerchiamo di convincerti, ma di offrirti una valutazione reale e corretta, basata su ingegneria di precisione e installazioni su misura per un futuro energetico sostenibile.
+              <span class="font-bold text-slate-900">La nostra filosofia:</span> Offriamo valutazioni tecniche accurate e soluzioni personalizzate, fondate su ingegneria di precisione e installazioni su misura, per garantire un futuro energetico sostenibile e di valore duraturo.
             </p>
           </div>
           
@@ -431,10 +466,10 @@
           <h3 class="font-bold text-slate-900 text-lg">Fotovoltaico</h3>
           <p class="text-slate-600 text-sm">Soluzioni integrate per ogni tipo di copertura, con componenti di alta qualità e certificazioni complete.</p>
         </article>
-        <article id="eolico" class="blur-card rounded-2xl p-6 space-y-3">
-          <i class="fa-solid fa-wind text-2xl text-amber-500"></i>
-          <h3 class="font-bold text-slate-900 text-lg">Eolico</h3>
-          <p class="text-slate-600 text-sm">Sistemi minieolici progettati per massimizzare l'efficienza energetica in contesti appropriati.</p>
+        <article id="accumulo" class="blur-card rounded-2xl p-6 space-y-3">
+          <i class="fa-solid fa-battery-full text-2xl text-amber-500"></i>
+          <h3 class="font-bold text-slate-900 text-lg">Sistemi di accumulo (Batterie)</h3>
+          <p class="text-slate-600 text-sm">Installiamo soluzioni di storage avanzate per gestire l'energia prodotta anche di sera, massimizzando l'autoconsumo e l'indipendenza energetica.</p>
         </article>
         <article id="termico" class="blur-card rounded-2xl p-6 space-y-3">
           <i class="fa-solid fa-temperature-arrow-up text-2xl text-amber-500"></i>
@@ -574,6 +609,78 @@
     </div>
   </section>
 
+  <section id="faq" class="bg-white border-t border-slate-200 py-14 px-4 md:px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Domande frequenti</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Risposte chiare per scelte consapevoli</h2>
+        <p class="text-slate-600 text-sm md:text-base max-w-2xl mx-auto mt-4">Le informazioni più richieste dai nostri clienti, raccolte per aiutarti a comprendere meglio il mondo dell'energia solare.</p>
+      </div>
+      
+      <div class="faq-accordion space-y-3">
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">Qual è il tempo di ritorno dell'investimento per un impianto fotovoltaico?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Il tempo di ritorno dell'investimento (ROI) dipende da diversi fattori: dimensione dell'impianto, consumi energetici, esposizione solare e incentivi disponibili. In media, per un impianto residenziale di 3-6 kW, il ROI si attesta tra i 5 e gli 8 anni. Considerando che un impianto fotovoltaico ha una vita utile di 25-30 anni, si tratta di un investimento vantaggioso nel lungo periodo.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">È necessario sostituire completamente il tetto prima dell'installazione?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Non sempre. Durante la valutazione preliminare, analizziamo lo stato del tetto e la sua capacità di supportare l'impianto per 25-30 anni. Se il tetto è in buone condizioni e ha ancora diversi anni di vita utile, l'installazione può procedere senza sostituzioni. In caso di dubbi sulla tenuta strutturale, consigliamo interventi mirati o la sostituzione delle parti critiche.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">Come funziona lo scambio sul posto dell'energia prodotta in eccesso?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Lo scambio sul posto (SSP) è un meccanismo che permette di immettere nella rete elettrica nazionale l'energia prodotta in eccesso durante il giorno e prelevarla quando serve (sera e notte). GSE (Gestore Servizi Energetici) riconosce un contributo economico per l'energia immessa, che viene utilizzato per compensare i costi dell'energia prelevata. Il sistema è completamente automatizzato e non richiede interventi manuali.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">Quali manutenzioni sono necessarie per un impianto fotovoltaico?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">La manutenzione di un impianto fotovoltaico è minima ma importante: pulizia periodica dei pannelli (1-2 volte l'anno), controllo visivo dello stato dei moduli e dei cavi, verifica delle prestazioni attraverso il monitoraggio. Gli inverter hanno una durata di circa 10-15 anni e potrebbero richiedere sostituzione. Consigliamo un controllo professionale annuale per garantire massima efficienza e sicurezza.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item blur-card rounded-xl overflow-hidden border border-slate-200">
+          <button class="faq-question touch-button w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center hover:bg-slate-50 transition">
+            <span class="font-bold text-slate-900 text-sm md:text-base">È possibile integrare un sistema di accumulo (batterie) in un impianto esistente?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-amber-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content px-5 md:px-6 pb-5 md:pb-6">
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">Sì, nella maggior parte dei casi è possibile integrare un sistema di accumulo in un impianto fotovoltaico esistente. La fattibilità dipende dalla compatibilità dell'inverter e dallo spazio disponibile. I sistemi di accumulo moderni permettono di aumentare l'autoconsumo fino al 70-80%, riducendo ulteriormente la dipendenza dalla rete. Valutiamo caso per caso per garantire la migliore soluzione tecnica ed economica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="google-business" class="bg-white border-t border-slate-200 py-14 px-4 md:px-6">
     <div class="max-w-3xl mx-auto text-center space-y-5">
       <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">La nostra reputazione</span>
@@ -624,6 +731,37 @@
       });
       
       console.log('Touch optimization loaded:', buttons.length, 'touch-friendly buttons');
+      
+      // FAQ Accordion functionality
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.closest('.faq-item');
+          const answer = faqItem.querySelector('.faq-answer');
+          const icon = question.querySelector('.faq-icon');
+          
+          // Close all other FAQ items
+          document.querySelectorAll('.faq-item.open').forEach(openItem => {
+            if (openItem !== faqItem) {
+              openItem.classList.remove('open');
+              openItem.querySelector('.faq-answer').classList.remove('open');
+            }
+          });
+          
+          // Toggle current FAQ item
+          faqItem.classList.toggle('open');
+          answer.classList.toggle('open');
+          
+          // Update aria-expanded attribute for accessibility
+          const isExpanded = faqItem.classList.contains('open');
+          question.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Set initial aria-expanded attribute
+        question.setAttribute('aria-expanded', 'false');
+      });
+      
+      console.log('FAQ accordion loaded:', faqQuestions.length, 'FAQ items');
     });
   </script>
 </body>
