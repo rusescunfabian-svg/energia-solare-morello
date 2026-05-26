@@ -9,7 +9,6 @@ $template = @'
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/mobile.css">
 </head>
 <body>
   <header class="site-header is-scrolled">
@@ -53,7 +52,6 @@ $template = @'
     </div>
   </main>
   <footer class="site-footer"><div class="wrap footer-bottom" style="border:none"><span>© 2026 Energia Solare di Morello Eugenio</span><a href="tel:+393292354847" style="color:var(--gold-light)">329 235 4847</a></div></footer>
-  <script src="../assets/js/promo-countdown.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
